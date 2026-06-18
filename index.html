@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Anastasia Method — A Stepper Program</title>
+<meta name="description" content="A stepper training method focused on glute activation, posture, and intentional movement. Created by Anastasia." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  /* ─────────────────────────────────────────
+     RESET + TOKENS
+  ───────────────────────────────────────── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; scroll-behavior: smooth; }
+  img { display: block; max-width: 100%; }
+  button { font: inherit; cursor: pointer; border: none; background: none; }
+  a { color: inherit; text-decoration: none; }
+
+  :root {
+    /* palette — restrained, premium */
+    --bone:    #F5F2EC;
+    --paper:   #FFFFFF;
+    --ink:     #1A1A1A;
+    --sub:     #5C5C5C;
+    --mute:    #8A8780;
+    --line:    #E5E1D8;
+    --sky:     #DCE6E9;
+    --deep:    #2E4A5A;
+    --warm:    #C4A580;
+
+    /* type scale — fixed, no clamp drift */
+    --t-display: 64px;
+    --t-h1:      44px;
+    --t-h2:      32px;
+    --t-h3:      20px;
+    --t-body-l:  18px;
+    --t-body:    16px;
+    --t-small:   14px;
+    --t-label:   11px;
+
+    /* spacing — 8pt grid */
+    --s-1: 8px;
+    --s-2: 16px;
+    --s-3: 24px;
+    --s-4: 32px;
+    --s-5: 48px;
+    --s-6: 64px;
+    --s-7: 96px;
+    --s-8: 128px;
+
+    --max: 1240px;
+    --gutter: 32px;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: var(--t-body);
+    line-height: 1.6;
+    color: var(--ink);
+    background: var(--bone);
+    font-weight: 400;
+  }
+
+  /* Mobile type scale */
+  @media (max-width: 768px) {
+    :root {
+      --t-display: 40px;
+      --t-h1:      30px;
+      --t-h2:      24px;
+      --t-h3:      18px;
+      --t-body-l:  16px;
+      --gutter:    20px;
+    }
+  }
+
+  /* ─────────────────────────────────────────
+     TYPOGRAPHY UTILITIES
+  ───────────────────────────────────────── */
+  .serif { font-family: 'Fraunces', Georgia, serif; font-weight: 300; letter-spacing: -0.02em; }
+  .display { font-family: 'Fraunces', Georgia, serif; font-weight: 300; font-size: var(--t-display); line-height: 1.05; letter-spacing: -0.025em; }
+  .h1 { font-family: 'Fraunces', Georgia, serif; font-weight: 300; font-size: var(--t-h1); line-height: 1.1; letter-spacing: -0.02em; }
+  .h2 { font-family: 'Fraunces', Georgia, serif; font-weight: 400; font-size: var(--t-h2); line-height: 1.2; letter-spacing: -0.015em; }
+  .h3 { font-family: 'Inter', sans-serif; font-weight: 500; font-size: var(--t-h3); line-height: 1.3; letter-spacing: -0.005em; }
+  .body-l { font-size: var(--t-body-l); line-height: 1.65; color: var(--sub); }
+  .body  { font-size: var(--t-body);   line-height: 1.65; color: var(--sub); }
+  .small { font-size: var(--t-small);  line-height: 1.55; color: var(--sub); }
+  .label { font-size: var(--t-label); font-weight: 500; line-height: 1; letter-spacing: 0.16em; text-transform: uppercase; color: var(--deep); }
+
+  /* ─────────────────────────────────────────
+     LAYOUT
+  ───────────────────────────────────────── */
+  .container { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+  section { padding: var(--s-7) 0; }
+  @media (max-width: 768px) { section { padding: var(--s-6) 0; } }
+
+  /* ─────────────────────────────────────────
+     ANNOUNCEMENT BAR
+  ───────────────────────────────────────── */
+  .announce {
+    background: var(--ink); color: var(--paper);
+    font-size: var(--t-label); letter-spacing: 0.16em; text-transform: uppercase;
+    font-weight: 500; text-align: center;
+    padding: 10px var(--gutter);
+  }
+  .announce span { opacity: 0.6; margin: 0 8px; }
+
+  /* ─────────────────────────────────────────
+     NAV
+  ───────────────────────────────────────── */
+  nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(245, 242, 236, 0.94);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+    padding: 0 var(--gutter);
+    max-width: var(--max);
+    margin: 0 auto;
+  }
+  .logo {
+    font-family: 'Fraunces', serif; font-weight: 400;
+    font-size: 18px; letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .nav-links { display: flex; gap: var(--s-4); align-items: center; }
+  .nav-link {
+    font-size: var(--t-small); color: var(--ink); font-weight: 400;
+  }
+  .nav-link:hover { color: var(--deep); }
+  .nav-cta {
+    background: var(--ink); color: var(--paper);
+    padding: 10px 18px;
+    font-size: var(--t-small); font-weight: 500;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--deep); }
+  @media (max-width: 600px) { .nav-link.hide-mobile { display: none; } }
+
+  /* ─────────────────────────────────────────
+     HERO
+  ───────────────────────────────────────── */
+  .hero {
+    padding-top: var(--s-7);
+    padding-bottom: var(--s-7);
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: var(--s-6);
+    align-items: center;
+  }
+  @media (max-width: 900px) {
+    .hero-grid { grid-template-columns: 1fr; gap: var(--s-5); }
+  }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    margin-bottom: var(--s-3);
+  }
+  .hero-eyebrow::before {
+    content: ''; display: block;
+    width: 24px; height: 1px; background: var(--deep);
+  }
+  .hero-title { margin-bottom: var(--s-3); }
+  .hero-sub {
+    max-width: 480px;
+    margin-bottom: var(--s-5);
+  }
+  .hero-actions {
+    display: flex; gap: var(--s-2); flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: var(--s-5);
+  }
+  .btn-primary {
+    background: var(--ink); color: var(--paper);
+    padding: 16px 28px;
+    font-size: var(--t-small); font-weight: 500;
+    letter-spacing: 0.04em;
+    transition: background 0.2s;
+  }
+  .btn-primary:hover { background: var(--deep); }
+  .btn-secondary {
+    color: var(--ink);
+    font-size: var(--t-small); font-weight: 500;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--ink);
+  }
+  .btn-secondary:hover { color: var(--deep); border-color: var(--deep); }
+
+  .hero-proof {
+    display: flex; align-items: center; gap: 12px;
+    padding-top: var(--s-3);
+    border-top: 1px solid var(--line);
+    font-size: var(--t-small);
+    color: var(--sub);
+  }
+  .avatar-stack { display: flex; }
+  .avatar {
+    width: 32px; height: 32px; border-radius: 50%;
+    border: 2px solid var(--bone);
+    background: linear-gradient(135deg, var(--sky), var(--warm));
+    margin-left: -10px;
+  }
+  .avatar:first-child { margin-left: 0; }
+  .avatar:nth-child(2) { background: linear-gradient(135deg, var(--warm), var(--deep)); }
+  .avatar:nth-child(3) { background: linear-gradient(135deg, var(--deep), var(--sky)); }
+
+  /* Hero image */
+  .hero-media {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    background: var(--sky);
+    overflow: hidden;
+  }
+  .hero-media .ph {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    background:
+      linear-gradient(135deg, rgba(46,74,90,0.08) 0%, transparent 50%),
+      var(--sky);
+  }
+  .hero-media .ph span {
+    font-family: 'Fraunces', serif;
+    font-size: 14px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--deep); opacity: 0.5;
+  }
+  .hero-media-tag {
+    position: absolute; bottom: var(--s-3); left: var(--s-3);
+    background: var(--paper);
+    padding: 10px 14px;
+    font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+    font-weight: 500; color: var(--ink);
+  }
+
+  /* ─────────────────────────────────────────
+     STAT ROW
+  ───────────────────────────────────────── */
+  .stat-row {
+    background: var(--paper);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: var(--s-5) 0;
+  }
+  .stat-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--s-4);
+  }
+  @media (max-width: 768px) {
+    .stat-grid { grid-template-columns: 1fr 1fr; gap: var(--s-4); }
+  }
+  .stat { }
+  .stat-num {
+    font-family: 'Fraunces', serif; font-weight: 300;
+    font-size: 40px; line-height: 1;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+  .stat-label {
+    font-size: 13px; color: var(--sub); line-height: 1.4;
+  }
+
+  /* ─────────────────────────────────────────
+     METHOD SECTION
+  ───────────────────────────────────────── */
+  .method-head {
+    max-width: 720px;
+    margin-bottom: var(--s-6);
+  }
+  .method-head .label { margin-bottom: var(--s-2); display: block; }
+  .method-head .h1 { margin-bottom: var(--s-3); }
+
+  .method-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  @media (max-width: 768px) { .method-grid { grid-template-columns: 1fr; } }
+  .method-card {
+    background: var(--bone);
+    padding: var(--s-4);
+    display: flex; flex-direction: column; gap: var(--s-2);
+  }
+  .method-num {
+    font-family: 'Fraunces', serif; font-weight: 300;
+    font-size: 13px; letter-spacing: 0.08em;
+    color: var(--deep);
+  }
+  .method-card h3 {
+    font-family: 'Fraunces', serif; font-weight: 400;
+    font-size: 22px; line-height: 1.25; color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+  .method-card p {
+    font-size: 14px; line-height: 1.6; color: var(--sub);
+  }
+
+  /* ─────────────────────────────────────────
+     EDITORIAL SPLIT
+  ───────────────────────────────────────── */
+  .editorial {
+    background: var(--paper);
+  }
+  .editorial-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: var(--s-6);
+    align-items: center;
+  }
+  @media (max-width: 900px) {
+    .editorial-grid { grid-template-columns: 1fr; gap: var(--s-5); }
+  }
+  .editorial-media {
+    aspect-ratio: 5 / 6;
+    background: var(--sky);
+    position: relative;
+    overflow: hidden;
+  }
+  .editorial-media .ph {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--deep); opacity: 0.5;
+    font-family: 'Fraunces', serif;
+    font-size: 14px; letter-spacing: 0.12em; text-transform: uppercase;
+  }
+  .editorial-text .label { margin-bottom: var(--s-2); display: block; }
+  .editorial-text .h1 { margin-bottom: var(--s-3); }
+  .editorial-text p { margin-bottom: var(--s-3); }
+  .editorial-quote {
+    font-family: 'Fraunces', serif; font-weight: 300;
+    font-size: 22px; line-height: 1.4;
+    color: var(--ink); letter-spacing: -0.01em;
+    padding: var(--s-3) 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    margin: var(--s-3) 0;
+  }
+  .editorial-credentials {
+    display: flex; flex-direction: column; gap: 8px;
+    margin-top: var(--s-3);
+  }
+  .editorial-credentials div {
+    font-size: 14px; color: var(--sub);
+    display: flex; gap: 12px; align-items: center;
+  }
+  .editorial-credentials div::before {
+    content: ''; width: 4px; height: 4px; border-radius: 50%;
+    background: var(--deep);
+  }
+
+  /* ─────────────────────────────────────────
+     PRICING
+  ───────────────────────────────────────── */
+  .pricing-head {
+    max-width: 720px;
+    margin-bottom: var(--s-6);
+  }
+  .pricing-head .label { margin-bottom: var(--s-2); display: block; }
+  .pricing-head .h1 { margin-bottom: var(--s-3); }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--s-3);
+  }
+  @media (max-width: 768px) { .pricing-grid { grid-template-columns: 1fr; } }
+
+  .plan {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    padding: var(--s-5);
+    position: relative;
+    display: flex; flex-direction: column;
+  }
+  .plan.featured {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+  }
+  .plan-tag {
+    font-size: var(--t-label); letter-spacing: 0.14em;
+    text-transform: uppercase; font-weight: 500;
+    color: var(--deep);
+    margin-bottom: var(--s-2);
+  }
+  .plan.featured .plan-tag { color: var(--warm); }
+  .plan-name {
+    font-family: 'Fraunces', serif; font-weight: 400;
+    font-size: 26px; line-height: 1.2; letter-spacing: -0.01em;
+    margin-bottom: var(--s-2);
+  }
+  .plan-desc {
+    font-size: 14px; line-height: 1.6;
+    color: var(--sub);
+    margin-bottom: var(--s-3);
+  }
+  .plan.featured .plan-desc { color: rgba(255,255,255,0.7); }
+  .plan-price {
+    display: flex; align-items: baseline; gap: 6px;
+    padding: var(--s-3) 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    margin-bottom: var(--s-3);
+  }
+  .plan.featured .plan-price {
+    border-color: rgba(255,255,255,0.15);
+  }
+  .plan-price .num {
+    font-family: 'Fraunces', serif; font-weight: 300;
+    font-size: 40px; line-height: 1; letter-spacing: -0.02em;
+  }
+  .plan-price .unit {
+    font-size: 13px; color: var(--sub);
+  }
+  .plan.featured .plan-price .unit { color: rgba(255,255,255,0.55); }
+  .plan-list {
+    list-style: none; margin-bottom: var(--s-4); flex: 1;
+  }
+  .plan-list li {
+    font-size: 14px; line-height: 1.5;
+    padding: 10px 0;
+    display: flex; gap: 10px;
+    color: var(--ink);
+  }
+  .plan.featured .plan-list li { color: rgba(255,255,255,0.85); }
+  .plan-list li::before {
+    content: ''; width: 14px; height: 14px;
+    border-radius: 50%; background: var(--sky);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-top: 4px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath d='M1.5 4l1.5 1.5L6.5 2' stroke='%232E4A5A' stroke-width='1.2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: center;
+  }
+  .plan.featured .plan-list li::before {
+    background-color: var(--warm);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath d='M1.5 4l1.5 1.5L6.5 2' stroke='%231A1A1A' stroke-width='1.2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  }
+  .plan-btn {
+    width: 100%;
+    background: var(--ink); color: var(--paper);
+    padding: 14px;
+    font-size: 13px; font-weight: 500;
+    letter-spacing: 0.05em;
+    transition: opacity 0.2s;
+  }
+  .plan.featured .plan-btn {
+    background: var(--paper); color: var(--ink);
+  }
+  .plan-btn:hover { opacity: 0.85; }
+
+  /* ─────────────────────────────────────────
+     TESTIMONIALS
+  ───────────────────────────────────────── */
+  .testimonials {
+    background: var(--paper);
+  }
+  .test-head {
+    text-align: center;
+    margin-bottom: var(--s-6);
+    max-width: 600px;
+    margin-left: auto; margin-right: auto;
+  }
+  .test-head .label { margin-bottom: var(--s-2); display: block; }
+  .test-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--s-3);
+  }
+  @media (max-width: 768px) {
+    .test-grid { grid-template-columns: 1fr; }
+  }
+  .test-card {
+    background: var(--bone);
+    padding: var(--s-4);
+    display: flex; flex-direction: column; gap: var(--s-3);
+  }
+  .test-quote {
+    font-family: 'Fraunces', serif; font-weight: 300;
+    font-size: 19px; line-height: 1.45;
+    color: var(--ink); letter-spacing: -0.005em;
+    flex: 1;
+  }
+  .test-author { display: flex; gap: 12px; align-items: center; }
+  .test-author .av {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--sky), var(--warm));
+  }
+  .test-name { font-size: 14px; font-weight: 500; color: var(--ink); }
+  .test-meta { font-size: 12px; color: var(--sub); }
+
+  /* ─────────────────────────────────────────
+     FAQ
+  ───────────────────────────────────────── */
+  .faq-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: var(--s-6);
+  }
+  @media (max-width: 900px) {
+    .faq-grid { grid-template-columns: 1fr; gap: var(--s-4); }
+  }
+  .faq-item {
+    border-top: 1px solid var(--line);
+    padding: var(--s-3) 0;
+  }
+  .faq-item:last-child { border-bottom: 1px solid var(--line); }
+  .faq-q {
+    width: 100%; text-align: left;
+    display: flex; justify-content: space-between; align-items: center; gap: var(--s-2);
+    font-family: 'Inter', sans-serif; font-weight: 500;
+    font-size: 16px; color: var(--ink);
+    padding: 0;
+  }
+  .faq-q::after {
+    content: '+'; font-size: 20px; color: var(--sub);
+    font-weight: 300;
+    transition: transform 0.2s;
+  }
+  .faq-item.open .faq-q::after { content: '−'; }
+  .faq-a {
+    font-size: 14px; color: var(--sub); line-height: 1.7;
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+  }
+  .faq-item.open .faq-a {
+    max-height: 400px;
+    padding-top: var(--s-2);
+  }
+
+  /* ─────────────────────────────────────────
+     FINAL CTA
+  ───────────────────────────────────────── */
+  .final {
+    background: var(--ink); color: var(--paper);
+    text-align: center;
+  }
+  .final-inner { max-width: 640px; margin: 0 auto; }
+  .final .label {
+    color: var(--warm);
+    margin-bottom: var(--s-2);
+    display: block;
+  }
+  .final h2 {
+    font-family: 'Fraunces', serif; font-weight: 300;
+    font-size: var(--t-h1); line-height: 1.1;
+    color: var(--paper);
+    margin-bottom: var(--s-3);
+    letter-spacing: -0.02em;
+  }
+  .final p {
+    color: rgba(255,255,255,0.7);
+    margin-bottom: var(--s-4);
+    font-size: var(--t-body-l);
+  }
+  .final .btn-primary {
+    background: var(--paper); color: var(--ink);
+  }
+  .final .btn-primary:hover { background: var(--warm); }
+
+  /* ─────────────────────────────────────────
+     FOOTER
+  ───────────────────────────────────────── */
+  footer {
+    background: var(--bone);
+    border-top: 1px solid var(--line);
+    padding: var(--s-5) 0;
+  }
+  .footer-inner {
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: var(--s-3);
+  }
+  .footer-brand {
+    font-family: 'Fraunces', serif; font-weight: 400;
+    font-size: 16px; color: var(--ink);
+  }
+  .footer-meta {
+    font-size: 12px; color: var(--mute);
+    max-width: 580px; line-height: 1.6;
+  }
+
+  /* ─────────────────────────────────────────
+     MODAL
+  ───────────────────────────────────────── */
+  .modal-overlay {
+    position: fixed; inset: 0; z-index: 100;
+    background: rgba(26,26,26,0.55);
+    display: none; align-items: center; justify-content: center;
+    padding: 20px;
+    animation: fadeIn 0.25s ease;
+  }
+  .modal-overlay.open { display: flex; }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+  .modal {
+    background: var(--paper);
+    max-width: 460px; width: 100%;
+    padding: var(--s-5);
+    position: relative;
+    animation: slideUp 0.3s ease;
+  }
+  .modal-close {
+    position: absolute; top: 16px; right: 18px;
+    font-size: 20px; color: var(--mute);
+    width: 28px; height: 28px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .modal-close:hover { color: var(--ink); }
+
+  .modal-eyebrow {
+    font-size: var(--t-label); letter-spacing: 0.16em;
+    text-transform: uppercase; font-weight: 500;
+    color: var(--deep);
+    margin-bottom: var(--s-2);
+  }
+  .modal-title {
+    font-family: 'Fraunces', serif; font-weight: 300;
+    font-size: 28px; line-height: 1.15;
+    color: var(--ink); letter-spacing: -0.02em;
+    margin-bottom: var(--s-2);
+  }
+  .modal-body {
+    font-size: 14px; line-height: 1.6; color: var(--sub);
+    margin-bottom: var(--s-3);
+  }
+  .modal-form { display: flex; flex-direction: column; gap: 10px; }
+  .modal-form input {
+    width: 100%; padding: 13px 14px;
+    border: 1px solid var(--line);
+    background: var(--bone);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; color: var(--ink);
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .modal-form input:focus {
+    border-color: var(--ink);
+    background: var(--paper);
+  }
+  .modal-form button {
+    background: var(--ink); color: var(--paper);
+    padding: 14px;
+    font-size: 13px; font-weight: 500;
+    letter-spacing: 0.05em;
+    margin-top: 4px;
+    transition: background 0.2s;
+  }
+  .modal-form button:hover { background: var(--deep); }
+  .modal-note {
+    font-size: 11px; color: var(--mute);
+    margin-top: 12px; text-align: center;
+  }
+  .modal-success {
+    text-align: center; padding: var(--s-3) 0;
+  }
+  .modal-success .h2 {
+    margin-bottom: var(--s-2);
+  }
+  .modal-success p { font-size: 14px; color: var(--sub); }
+</style>
+</head>
+<body>
+
+<!-- Announcement -->
+<div class="announce">
+  Enrollment for the next cohort opens this season <span>·</span> Join the list to be notified first
+</div>
+
+<!-- Nav -->
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="#">Anastasia<span style="color:var(--deep)">.</span></a>
+    <div class="nav-links">
+      <a class="nav-link hide-mobile" href="#method">Method</a>
+      <a class="nav-link hide-mobile" href="#pricing">Program</a>
+      <a class="nav-link hide-mobile" href="guide.html">Guide</a>
+      <a class="nav-cta" href="#" onclick="openModal(); return false;">Join Waitlist</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-eyebrow">
+          <span class="label">The Anastasia Method</span>
+        </div>
+        <h1 class="display hero-title">A stepper program built around how your body is actually supposed to move.</h1>
+        <p class="body-l hero-sub">Most stepper training builds your quads and wears down your knees. This method does the opposite — activating glutes, posterior chain, and core through precise technique.</p>
+        <div class="hero-actions">
+          <a href="#" class="btn-primary" onclick="openModal(); return false;">Join the Waitlist</a>
+          <a href="#method" class="btn-secondary">Explore the Method</a>
+        </div>
+        <div class="hero-proof">
+          <div class="avatar-stack">
+            <div class="avatar"></div>
+            <div class="avatar"></div>
+            <div class="avatar"></div>
+          </div>
+          <span>Trusted by 70+ women across two cohorts</span>
+        </div>
+      </div>
+      <div class="hero-media">
+        <div class="ph"><span>Hero photograph</span></div>
+        <div class="hero-media-tag">Method · Form · Results</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Stats -->
+<div class="stat-row">
+  <div class="container">
+    <div class="stat-grid">
+      <div class="stat">
+        <div class="stat-num">10 kg</div>
+        <div class="stat-label">Lost by Anastasia using<br>her own method</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">70+</div>
+        <div class="stat-label">Women trained across<br>two private cohorts</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">365</div>
+        <div class="stat-label">Days refining the method<br>in daily practice</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">5</div>
+        <div class="stat-label">Days to feel a shift<br>in how you move</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- METHOD -->
+<section id="method">
+  <div class="container">
+    <div class="method-head">
+      <span class="label">The Method</span>
+      <h2 class="h1">Four principles that change everything about how a stepper works.</h2>
+      <p class="body-l">A stepper is one of the most underused pieces of equipment in any home — because the people using it have never been taught what it's actually for.</p>
+    </div>
+    <div class="method-grid">
+      <div class="method-card">
+        <span class="method-num">01 / Activation</span>
+        <h3>Glutes, not quadriceps</h3>
+        <p>The way most people step builds bulky thighs. The cues in this program reroute that force into the glutes and hamstrings — where you actually want it.</p>
+      </div>
+      <div class="method-card">
+        <span class="method-num">02 / Alignment</span>
+        <h3>Knees, hips, spine</h3>
+        <p>Eliminate the joint pain that comes from poor stepper form. Every drill is grounded in alignment principles drawn from Pilates and functional movement.</p>
+      </div>
+      <div class="method-card">
+        <span class="method-num">03 / Breath</span>
+        <h3>Thoracic mobility</h3>
+        <p>Open the upper back so the diaphragm and glutes can work together. This is the unlock most programs ignore entirely.</p>
+      </div>
+      <div class="method-card">
+        <span class="method-num">04 / Progression</span>
+        <h3>Three structured levels</h3>
+        <p>Foundation, Intensity, Sculpt. You begin where your body actually is, not where you wish it were — and progress when your form earns it.</p>
+      </div>
+      <div class="method-card">
+        <span class="method-num">05 / Diagnostic</span>
+        <h3>Personal video review</h3>
+        <p>In the full tier, Anastasia reviews a short clip of how you move and returns a custom audio note — corrections specific to your body.</p>
+      </div>
+      <div class="method-card">
+        <span class="method-num">06 / Recovery</span>
+        <h3>Pelvic floor work</h3>
+        <p>Dedicated sessions for the deep core and pelvic floor — the foundation that makes every other muscle in your body work better.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDITORIAL -->
+<section class="editorial">
+  <div class="container">
+    <div class="editorial-grid">
+      <div class="editorial-media">
+        <div class="ph">Portrait of Anastasia</div>
+      </div>
+      <div class="editorial-text">
+        <span class="label">About Anastasia</span>
+        <h2 class="h1">She lost 10 kilograms. Then she spent a year figuring out exactly why it worked.</h2>
+        <p class="body-l">Anastasia trained daily on the stepper for a year while studying the mechanics of every step — what muscles fired, what alignment held, what went wrong when other women tried to copy her routine.</p>
+        <blockquote class="editorial-quote">"Every woman who comes to me says the same thing: I had no idea I was using the stepper completely wrong."</blockquote>
+        <p>What sets this method apart isn't the stepper. It's the diagnostic eye — the ability to look at how you move and name precisely what needs to change. That clarity is the entire program.</p>
+        <div class="editorial-credentials">
+          <div>Pilates-informed movement training</div>
+          <div>Two completed online cohorts</div>
+          <div>Trained participants with hearing loss successfully</div>
+          <div>Active practice for over twelve months</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="container">
+    <div class="pricing-head">
+      <span class="label">The Program</span>
+      <h2 class="h1">Two ways to begin.</h2>
+      <p class="body-l">Both tiers include the full method and all training sessions. The difference is whether you want Anastasia's eye on your specific body.</p>
+    </div>
+    <div class="pricing-grid">
+
+      <div class="plan">
+        <span class="plan-tag">Self-Paced</span>
+        <h3 class="plan-name">The Method</h3>
+        <p class="plan-desc">The full stepper program. Everything you need to train correctly — on your own schedule.</p>
+        <div class="plan-price">
+          <span class="num">$49</span>
+          <span class="unit">one-time</span>
+        </div>
+        <ul class="plan-list">
+          <li>Five progressive stepper sessions across three levels</li>
+          <li>Complete technique video library</li>
+          <li>Thoracic mobility and pelvic floor sessions</li>
+          <li>Nutrition reference guide</li>
+          <li>Lifetime access to all recordings</li>
+        </ul>
+        <button class="plan-btn" onclick="openModal()">Join Waitlist</button>
+      </div>
+
+      <div class="plan featured">
+        <span class="plan-tag">Most Chosen</span>
+        <h3 class="plan-name">The Method + Personal Review</h3>
+        <p class="plan-desc">Everything in The Method, plus Anastasia's direct attention on how your body moves.</p>
+        <div class="plan-price">
+          <span class="num">$129</span>
+          <span class="unit">one-time</span>
+        </div>
+        <ul class="plan-list">
+          <li>Everything in The Method</li>
+          <li>Personal movement video review by Anastasia</li>
+          <li>Custom audio response with corrections for your body</li>
+          <li>Email access for follow-up questions</li>
+          <li>Priority placement in future cohorts</li>
+        </ul>
+        <button class="plan-btn" onclick="openModal()">Join Waitlist</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="container">
+    <div class="test-head">
+      <span class="label">What Women Say</span>
+      <h2 class="h1">"I'd been doing this for years. Nobody told me."</h2>
+    </div>
+    <div class="test-grid">
+      <div class="test-card">
+        <p class="test-quote">After the first technique video, I felt muscles in my glutes I'd never felt before. My knees stopped hurting within three days.</p>
+        <div class="test-author">
+          <div class="av"></div>
+          <div>
+            <div class="test-name">Cohort 02 participant</div>
+            <div class="test-meta">Verified review</div>
+          </div>
+        </div>
+      </div>
+      <div class="test-card">
+        <p class="test-quote">My posture changed completely. The back rolls I'd had for years started to soften — just from breathing and moving differently.</p>
+        <div class="test-author">
+          <div class="av"></div>
+          <div>
+            <div class="test-name">Cohort 01 & 02</div>
+            <div class="test-meta">Returning participant</div>
+          </div>
+        </div>
+      </div>
+      <div class="test-card">
+        <p class="test-quote">I'd watched every stepper video on YouTube. None of them taught what Anastasia teaches. There's just no comparison.</p>
+        <div class="test-author">
+          <div class="av"></div>
+          <div>
+            <div class="test-name">Cohort 02 participant</div>
+            <div class="test-meta">Verified review</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="container">
+    <div class="faq-grid">
+      <div>
+        <span class="label">FAQ</span>
+        <h2 class="h1" style="margin-top: var(--s-2);">Common questions.</h2>
+      </div>
+      <div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">Do I need a specific stepper to do this program?</button>
+          <div class="faq-a">Any mini-stepper with side handles or a basic display will work. The method is about technique, not equipment. Anastasia will share recommendations on what to look for if you're still shopping.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">How many minutes per day will I need?</button>
+          <div class="faq-a">Beginner sessions are around 20 minutes. Once you progress, 30–40 minutes is the sweet spot. The method emphasizes consistency over duration — five minutes daily beats an hour once a week.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">I have knee or lower-back pain. Is this safe for me?</button>
+          <div class="faq-a">The method was largely built to address exactly these issues. That said, please consult your healthcare provider before starting. The personal review tier is especially helpful if you have a history of joint discomfort.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">When does enrollment open?</button>
+          <div class="faq-a">Cohorts open seasonally with limited capacity. Joining the waitlist guarantees you receive enrollment access before it's announced publicly.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">Is this medical or therapeutic advice?</button>
+          <div class="faq-a">No. This is a fitness and movement program based on Anastasia's personal training experience and study. It is not medical advice and is not a substitute for professional medical or physical therapy consultation.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final">
+  <div class="container">
+    <div class="final-inner">
+      <span class="label">Next Cohort</span>
+      <h2>Spots are limited. The list opens first.</h2>
+      <p>The waitlist receives enrollment access before it's made public. No commitment, no spam — one email when doors open.</p>
+      <a href="#" class="btn-primary" onclick="openModal(); return false;">Join the Waitlist</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">Anastasia<span style="color:var(--deep)">.</span></div>
+      <div class="footer-meta">© 2026 The Anastasia Method. This program is for educational purposes only and does not constitute medical advice. Consult a qualified healthcare professional before beginning any new exercise program.</div>
+    </div>
+  </div>
+</footer>
+
+<!-- Modal -->
+<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this) closeModal()">
+  <div class="modal" id="modal">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">×</button>
+    <div id="modalContent">
+      <p class="modal-eyebrow">Early Access</p>
+      <h3 class="modal-title">Be the first to know when enrollment opens.</h3>
+      <p class="modal-body">Anastasia opens cohorts in limited batches. Drop your email and you'll receive enrollment access before it's announced anywhere else.</p>
+      <form class="modal-form" id="waitlistForm" onsubmit="handleSubmit(event)">
+        <input type="text" name="firstName" placeholder="First name" required autocomplete="given-name" />
+        <input type="email" name="email" placeholder="Email address" required autocomplete="email" />
+        <button type="submit">Notify Me</button>
+      </form>
+      <p class="modal-note">One email. When enrollment opens. Nothing else.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Modal control
+  function openModal() {
+    document.getElementById('modalOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    document.getElementById('modalOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeModal();
+  });
+
+  // Auto-open after delay (less aggressive than instant)
+  let modalShown = false;
+  setTimeout(() => {
+    if (!modalShown && !sessionStorage.getItem('modalSeen')) {
+      openModal();
+      modalShown = true;
+      sessionStorage.setItem('modalSeen', '1');
+    }
+  }, 8000);
+
+  // Form submit
+  function handleSubmit(e) {
+    e.preventDefault();
+    const f = e.target;
+    const name = f.firstName.value.trim();
+    const email = f.email.value.trim();
+    const leads = JSON.parse(localStorage.getItem('waitlist') || '[]');
+    leads.push({ name, email, ts: new Date().toISOString() });
+    localStorage.setItem('waitlist', JSON.stringify(leads));
+
+    document.getElementById('modalContent').innerHTML = `
+      <div class="modal-success">
+        <p class="modal-eyebrow">Confirmed</p>
+        <h3 class="modal-title">You're on the list, ${name}.</h3>
+        <p class="modal-body">We'll email <strong style="color:var(--ink)">${email}</strong> the moment the next cohort opens.</p>
+      </div>`;
+  }
+
+  // FAQ toggle
+  function toggleFaq(btn) {
+    btn.parentElement.classList.toggle('open');
+  }
+</script>
+
+</body>
+</html>
