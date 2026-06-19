@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Anastasia Method — Stepper Program</title>
+<meta name="description" content="A stepper training method focused on glute activation, posture, and intentional movement." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; scroll-behavior: smooth; }
+  img { display: block; max-width: 100%; }
+  button { font: inherit; cursor: pointer; border: none; background: none; }
+  a { color: inherit; text-decoration: none; }
+
+  :root {
+    --white:   #FFFFFF;
+    --black:   #111111;
+    --grey-1:  #555555;
+    --grey-2:  #999999;
+    --grey-3:  #DDDDDD;
+    --grey-4:  #F2F2F2;
+
+    --t-display: 60px;
+    --t-h1:      42px;
+    --t-h2:      30px;
+    --t-body-l:  17px;
+    --t-body:    15px;
+    --t-small:   13px;
+    --t-label:   11px;
+
+    --s-2: 16px; --s-3: 24px; --s-4: 32px;
+    --s-5: 48px; --s-6: 64px; --s-7: 96px;
+
+    --max: 1200px;
+    --gutter: 32px;
+  }
+  @media (max-width: 768px) {
+    :root {
+      --t-display: 36px;
+      --t-h1: 28px;
+      --t-h2: 22px;
+      --t-body-l: 16px;
+      --gutter: 20px;
+    }
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: var(--t-body);
+    line-height: 1.6;
+    color: var(--black);
+    background: var(--white);
+  }
+
+  .container { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+  section { padding: var(--s-7) 0; }
+  @media (max-width: 768px) { section { padding: var(--s-6) 0; } }
+
+  /* ── NAV ── */
+  .topbar {
+    background: var(--black); color: var(--white);
+    text-align: center; padding: 10px var(--gutter);
+    font-size: var(--t-label); letter-spacing: 0.14em;
+    text-transform: uppercase; font-weight: 500;
+  }
+  nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--grey-3);
+  }
+  .nav-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    height: 60px; padding: 0 var(--gutter);
+    max-width: var(--max); margin: 0 auto;
+  }
+  .logo {
+    font-family: 'Fraunces', serif; font-weight: 500;
+    font-size: 18px; letter-spacing: -0.01em;
+  }
+  .nav-links { display: flex; gap: 28px; align-items: center; }
+  .nav-link { font-size: var(--t-small); font-weight: 400; color: var(--grey-1); }
+  .nav-link:hover { color: var(--black); }
+  .nav-cta {
+    background: var(--black); color: var(--white);
+    padding: 9px 18px; font-size: var(--t-small); font-weight: 500;
+    transition: opacity 0.2s;
+  }
+  .nav-cta:hover { opacity: 0.8; }
+  @media (max-width: 600px) { .nav-link.hide-m { display: none; } }
+
+  /* ── HERO ── */
+  .hero { padding: var(--s-7) 0 var(--s-6); }
+  .hero-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: var(--s-6); align-items: center;
+  }
+  @media (max-width: 900px) {
+    .hero-grid { grid-template-columns: 1fr; gap: var(--s-5); }
+  }
+  .hero-label {
+    font-size: var(--t-label); font-weight: 500;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--grey-2); margin-bottom: var(--s-3);
+  }
+  .hero-title {
+    font-family: 'Fraunces', serif; font-weight: 300;
+    font-size: var(--t-display); line-height: 1.06;
+    letter-spacing: -0.025em;
+    margin-bottom: var(--s-3);
+  }
+  .hero-sub {
+    font-size: var(--t-body-l); line-height: 1.7;
+    color: var(--grey-1); max-width: 460px;
+    margin-bottom: var(--s-5);
+  }
+  .hero-actions { display: flex; gap: var(--s-2); flex-wrap: wrap; align-items: center; margin-bottom: var(--s-5); }
+  .btn-primary {
+    display: inline-block; background: var(--black); color: var(--white);
+    padding: 15px 28px; font-size: var(--t-small); font-weight: 500;
+    letter-spacing: 0.04em; transition: opacity 0.2s;
+  }
+  .btn-primary:hover { opacity: 0.8; }
+  .btn-secondary {
+    display: inline-block; color: var(--black);
+    font-size: var(--t-small); font-weight: 500;
+    padding: 15px 0; border-bottom: 1px solid var(--black);
+  }
+  .btn-secondary:hover { color: var(--grey-1); border-color: var(--grey-1); }
+
+  .hero-proof {
+    display: flex; align-items: center; gap: 12px;
+    padding-top: var(--s-3); border-top: 1px solid var(--grey-3);
+    font-size: var(--t-small); color: var(--grey-2);
+  }
+  .dots { display: flex; gap: 4px; }
+  .dots span {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--grey-3);
+  }
+  .dots span:nth-child(1) { background: var(--black); }
+  .dots span:nth-child(2) { background: var(--grey-1); }
+
+  .hero-img {
+    aspect-ratio: 4/5; overflow: hidden; background: var(--grey-4);
+  }
+  .hero-img img { width: 100%; height: 100%; object-fit: cover; }
+
+  /* ── STATS ── */
+  .stats {
+    border-top: 1px solid var(--grey-3);
+    border-bottom: 1px solid var(--grey-3);
+    padding: var(--s-5) 0;
+    background: var(--white);
+  }
+  .stat-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: var(--s-4); }
+  @media (max-width: 768px) { .stat-grid { grid-template-columns: 1fr 1fr; } }
+  .stat-num {
+    font-family: 'Fraunces', serif; font-weight: 300;
+    font-size: 38px; line-height: 1; letter-spacing: -0.02em;
+    margin-bottom: 6px;
+  }
+  .stat-label { font-size: var(--t-small); color: var(--grey-2); line-height: 1.45; }
+
+  /* ── METHOD ── */
+  .method-head { max-width: 680px; margin-bottom: var(--s-6); }
+  .label {
+    font-size: var(--t-label); font-weight: 500;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--grey-2); margin-bottom: var(--s-2); display: block;
+  }
+  .h1 {
+    font-family: 'Fraunces', serif; font-weight: 300;
+    font-size: var(--t-h1); line-height: 1.12;
+    letter-spacing: -0.02em;
+  }
+  .body-l { font-size: var(--t-body-l); line-height: 1.7; color: var(--grey-1); }
+
+  .method-grid {
+    display: grid; grid-template-columns: repeat(3,1fr);
+    gap: 1px; background: var(--grey-3); border: 1px solid var(--grey-3);
+  }
+  @media (max-width: 768px) { .method-grid { grid-template-columns: 1fr; } }
+  .method-card {
+    background: var(--white); padding: var(--s-4);
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .method-num {
+    font-size: var(--t-label); font-weight: 500;
+    letter-spacing: 0.12em; color: var(--grey-2);
+  }
+  .method-card h3 {
+    font-family: 'Fraunces', serif; font-weight: 400;
+    font-size: 20px; line-height: 1.25; letter-spacing: -0.01em;
+  }
+  .method-card p { font-size: 14px; line-height: 1.65; color: var(--grey-1); }
+
+  /* ── ABOUT ── */
+  .about { background: var(--grey-4); }
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1.15fr;
+    gap: var(--s-6); align-items: center;
+  }
+  @media (max-width: 900px) { .about-grid { grid-template-columns: 1fr; } }
+  .about-img { aspect-ratio: 4/5; overflow: hidden; background: var(--grey-3); }
+  .about-img img { width: 100%; height: 100%; object-fit: cover; }
+  .about-text .label { margin-bottom: var(--s-2); }
+  .about-text .h1 { margin-bottom: var(--s-3); }
+  .about-text p { margin-bottom: var(--s-3); }
+  .about-quote {
+    font-family: 'Fraunces', serif; font-weight: 300;
+    font-size: 21px; line-height: 1.4; letter-spacing: -0.01em;
+    padding: var(--s-3) 0;
+    border-top: 1px solid var(--grey-3);
+    border-bottom: 1px solid var(--grey-3);
+    margin: var(--s-3) 0;
+  }
+  .creds { display: flex; flex-direction: column; gap: 8px; margin-top: var(--s-3); }
+  .creds div {
+    font-size: 14px; color: var(--grey-1);
+    display: flex; gap: 10px; align-items: center;
+  }
+  .creds div::before {
+    content: ''; width: 4px; height: 4px; border-radius: 50%; background: var(--black); flex-shrink: 0;
+  }
+
+  /* ── PRICING ── */
+  .pricing-head { max-width: 680px; margin-bottom: var(--s-6); }
+  .pricing-head .h1 { margin-bottom: var(--s-3); }
+  .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-3); }
+  @media (max-width: 768px) { .pricing-grid { grid-template-columns: 1fr; } }
+
+  .plan {
+    border: 1px solid var(--grey-3); padding: var(--s-5);
+    display: flex; flex-direction: column; background: var(--white);
+  }
+  .plan.dark { background: var(--black); color: var(--white); border-color: var(--black); }
+  .plan-tag {
+    font-size: var(--t-label); letter-spacing: 0.14em;
+    text-transform: uppercase; font-weight: 500;
+    color: var(--grey-2); margin-bottom: var(--s-2);
+  }
+  .plan.dark .plan-tag { color: var(--grey-2); }
+  .plan-name {
+    font-family: 'Fraunces', serif; font-weight: 400;
+    font-size: 24px; line-height: 1.2; margin-bottom: var(--s-2);
+  }
+  .plan-desc {
+    font-size: 14px; line-height: 1.6; color: var(--grey-1); margin-bottom: var(--s-3);
+  }
+  .plan.dark .plan-desc { color: rgba(255,255,255,0.6); }
+  .plan-price {
+    display: flex; align-items: baseline; gap: 6px;
+    padding: var(--s-3) 0;
+    border-top: 1px solid var(--grey-3);
+    border-bottom: 1px solid var(--grey-3);
+    margin-bottom: var(--s-3);
+  }
+  .plan.dark .plan-price { border-color: rgba(255,255,255,0.15); }
+  .plan-price .num {
+    font-family: 'Fraunces', serif; font-weight: 300;
+    font-size: 38px; line-height: 1;
+  }
+  .plan-price .unit { font-size: var(--t-small); color: var(--grey-2); }
+  .plan.dark .plan-price .unit { color: rgba(255,255,255,0.45); }
+  .plan-list { list-style: none; margin-bottom: var(--s-4); flex: 1; }
+  .plan-list li {
+    font-size: 14px; line-height: 1.5; padding: 9px 0;
+    display: flex; gap: 10px;
+  }
+  .plan.dark .plan-list li { color: rgba(255,255,255,0.8); }
+  .plan-list li::before {
+    content: '✓'; font-size: 13px; flex-shrink: 0; margin-top: 1px;
+    color: var(--black); font-weight: 600;
+  }
+  .plan.dark .plan-list li::before { color: var(--white); }
+  .plan-btn {
+    width: 100%; padding: 14px; font-size: var(--t-small);
+    font-weight: 500; letter-spacing: 0.04em;
+    background: var(--black); color: var(--white);
+    transition: opacity 0.2s;
+  }
+  .plan.dark .plan-btn { background: var(--white); color: var(--black); }
+  .plan-btn:hover { opacity: 0.8; }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials { background: var(--grey-4); }
+  .test-head {
+    text-align: center; margin-bottom: var(--s-6);
+    max-width: 560px; margin-left: auto; margin-right: auto;
+  }
+  .test-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: var(--s-3); }
+  @media (max-width: 768px) { .test-grid { grid-template-columns: 1fr; } }
+  .test-card {
+    background: var(--white); padding: var(--s-4);
+    display: flex; flex-direction: column; gap: var(--s-3);
+  }
+  .test-quote {
+    font-family: 'Fraunces', serif; font-weight: 300;
+    font-size: 18px; line-height: 1.45; flex: 1;
+  }
+  .test-footer { display: flex; gap: 10px; align-items: center; }
+  .test-dot {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: var(--grey-3);
+  }
+  .test-name { font-size: 13px; font-weight: 500; }
+  .test-meta { font-size: 12px; color: var(--grey-2); }
+
+  /* ── FAQ ── */
+  .faq-grid {
+    display: grid; grid-template-columns: 1fr 2fr; gap: var(--s-6);
+  }
+  @media (max-width: 900px) { .faq-grid { grid-template-columns: 1fr; gap: var(--s-4); } }
+  .faq-item { border-top: 1px solid var(--grey-3); padding: var(--s-3) 0; }
+  .faq-item:last-child { border-bottom: 1px solid var(--grey-3); }
+  .faq-q {
+    width: 100%; text-align: left;
+    display: flex; justify-content: space-between; align-items: center; gap: var(--s-2);
+    font-weight: 500; font-size: 15px; padding: 0;
+  }
+  .faq-q::after { content: '+'; font-size: 18px; color: var(--grey-2); font-weight: 300; }
+  .faq-item.open .faq-q::after { content: '−'; }
+  .faq-a {
+    font-size: 14px; color: var(--grey-1); line-height: 1.7;
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+  }
+  .faq-item.open .faq-a { max-height: 400px; padding-top: var(--s-2); }
+
+  /* ── CTA ── */
+  .final {
+    background: var(--black); color: var(--white); text-align: center;
+  }
+  .final-inner { max-width: 600px; margin: 0 auto; }
+  .final .label { color: var(--grey-2); margin-bottom: var(--s-2); display: block; }
+  .final h2 {
+    font-family: 'Fraunces', serif; font-weight: 300;
+    font-size: var(--t-h1); line-height: 1.12; letter-spacing: -0.02em;
+    margin-bottom: var(--s-3);
+  }
+  .final p { color: rgba(255,255,255,0.6); margin-bottom: var(--s-4); font-size: var(--t-body-l); }
+  .final .btn-primary { background: var(--white); color: var(--black); }
+  .final .btn-primary:hover { opacity: 0.85; }
+
+  /* ── FOOTER ── */
+  footer { border-top: 1px solid var(--grey-3); padding: var(--s-5) 0; }
+  .footer-inner {
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: var(--s-3);
+  }
+  .footer-brand { font-family: 'Fraunces', serif; font-weight: 500; font-size: 16px; }
+  .footer-meta { font-size: 12px; color: var(--grey-2); max-width: 560px; line-height: 1.6; }
+
+  /* ── MODAL ── */
+  .modal-overlay {
+    position: fixed; inset: 0; z-index: 100;
+    background: rgba(0,0,0,0.5);
+    display: none; align-items: center; justify-content: center;
+    padding: 20px;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal {
+    background: var(--white); max-width: 440px; width: 100%;
+    padding: var(--s-5); position: relative;
+    animation: slideUp 0.3s ease;
+  }
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .modal-close {
+    position: absolute; top: 16px; right: 18px;
+    font-size: 20px; color: var(--grey-2);
+    width: 28px; height: 28px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .modal-close:hover { color: var(--black); }
+  .modal-label {
+    font-size: var(--t-label); letter-spacing: 0.16em;
+    text-transform: uppercase; font-weight: 500;
+    color: var(--grey-2); margin-bottom: var(--s-2);
+  }
+  .modal-title {
+    font-family: 'Fraunces', serif; font-weight: 300;
+    font-size: 26px; line-height: 1.15; letter-spacing: -0.02em;
+    margin-bottom: var(--s-2);
+  }
+  .modal-body { font-size: 14px; color: var(--grey-1); line-height: 1.65; margin-bottom: var(--s-3); }
+  .modal-form { display: flex; flex-direction: column; gap: 10px; }
+  .modal-form input {
+    width: 100%; padding: 13px 14px;
+    border: 1px solid var(--grey-3); background: var(--white);
+    font-family: 'Inter', sans-serif; font-size: 14px; color: var(--black);
+    outline: none; transition: border-color 0.2s;
+  }
+  .modal-form input:focus { border-color: var(--black); }
+  .modal-form button {
+    background: var(--black); color: var(--white);
+    padding: 14px; font-size: var(--t-small); font-weight: 500;
+    letter-spacing: 0.04em; margin-top: 4px; transition: opacity 0.2s;
+  }
+  .modal-form button:hover { opacity: 0.8; }
+  .modal-note { font-size: 11px; color: var(--grey-2); margin-top: 12px; text-align: center; }
+  .modal-success { text-align: center; padding: var(--s-3) 0; }
+  .modal-success .modal-title { margin-bottom: var(--s-2); }
+  .modal-success p { font-size: 14px; color: var(--grey-1); }
+</style>
+</head>
+<body>
+
+<div class="topbar">Next cohort opens soon · Join the waitlist for early access</div>
+
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="#">Anastasia.</a>
+    <div class="nav-links">
+      <a class="nav-link hide-m" href="#method">Method</a>
+      <a class="nav-link hide-m" href="#pricing">Program</a>
+      <a class="nav-link hide-m" href="guide.html">Guide</a>
+      <a class="nav-cta" href="#" onclick="openModal(); return false;">Join Waitlist</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <p class="hero-label">The Anastasia Method</p>
+        <h1 class="hero-title">A stepper program built around how your body is actually supposed to move.</h1>
+        <p class="hero-sub">Most stepper training builds your quads and wears down your knees. This method does the opposite — activating glutes, posterior chain, and core through precise technique.</p>
+        <div class="hero-actions">
+          <a href="#" class="btn-primary" onclick="openModal(); return false;">Join the Waitlist</a>
+          <a href="#method" class="btn-secondary">Explore the Method</a>
+        </div>
+        <div class="hero-proof">
+          <div class="dots"><span></span><span></span><span></span></div>
+          <span>Trusted by 70+ women across two cohorts</span>
+        </div>
+      </div>
+      <div class="hero-img">
+        <img src="imgs/anastasia-stepper.jpg" alt="Anastasia with her stepper" />
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="container">
+    <div class="stat-grid">
+      <div><div class="stat-num">10 kg</div><div class="stat-label">Lost by Anastasia using<br>her own method</div></div>
+      <div><div class="stat-num">70+</div><div class="stat-label">Women trained across<br>two private cohorts</div></div>
+      <div><div class="stat-num">365</div><div class="stat-label">Days refining the method<br>in daily practice</div></div>
+      <div><div class="stat-num">5</div><div class="stat-label">Days to feel a shift<br>in how you move</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- METHOD -->
+<section id="method">
+  <div class="container">
+    <div class="method-head">
+      <span class="label">The Method</span>
+      <h2 class="h1">Four principles that change everything about how a stepper works.</h2>
+      <p class="body-l" style="margin-top:var(--s-3)">A stepper is one of the most underused pieces of equipment in any home — because the people using it have never been taught what it's actually for.</p>
+    </div>
+    <div class="method-grid">
+      <div class="method-card">
+        <span class="method-num">01 / Activation</span>
+        <h3>Glutes, not quadriceps</h3>
+        <p>The way most people step builds bulky thighs. The cues in this program reroute that force into the glutes and hamstrings — where you actually want it.</p>
+      </div>
+      <div class="method-card">
+        <span class="method-num">02 / Alignment</span>
+        <h3>Knees, hips, spine</h3>
+        <p>Eliminate the joint pain that comes from poor stepper form. Every drill is grounded in alignment principles drawn from Pilates and functional movement.</p>
+      </div>
+      <div class="method-card">
+        <span class="method-num">03 / Breath</span>
+        <h3>Thoracic mobility</h3>
+        <p>Open the upper back so the diaphragm and glutes can work together. This is the unlock most programs ignore entirely.</p>
+      </div>
+      <div class="method-card">
+        <span class="method-num">04 / Progression</span>
+        <h3>Three structured levels</h3>
+        <p>Foundation, Intensity, Sculpt. You begin where your body actually is — and progress when your form earns it.</p>
+      </div>
+      <div class="method-card">
+        <span class="method-num">05 / Diagnostic</span>
+        <h3>Personal video review</h3>
+        <p>In the full tier, Anastasia reviews a short clip of how you move and returns a custom audio note — corrections specific to your body.</p>
+      </div>
+      <div class="method-card">
+        <span class="method-num">06 / Recovery</span>
+        <h3>Pelvic floor work</h3>
+        <p>Dedicated sessions for the deep core and pelvic floor — the foundation that makes every other muscle work better.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img">
+        <img src="imgs/anastasia-matt.jpg" alt="Anastasia" />
+      </div>
+      <div class="about-text">
+        <span class="label">About Anastasia</span>
+        <h2 class="h1">She lost 10 kilograms. Then she spent a year figuring out exactly why it worked.</h2>
+        <p class="body-l">Anastasia trained daily on the stepper for a year while studying the mechanics of every step — what muscles fired, what alignment held, what went wrong when other women tried to copy her routine.</p>
+        <blockquote class="about-quote">"Every woman who comes to me says the same thing: I had no idea I was using the stepper completely wrong."</blockquote>
+        <p class="body-l">What sets this method apart isn't the stepper. It's the diagnostic eye — the ability to look at how you move and name precisely what needs to change.</p>
+        <div class="creds">
+          <div>Pilates-informed movement training</div>
+          <div>Two completed online cohorts</div>
+          <div>Successfully trained participants with hearing loss</div>
+          <div>Active daily practice for over twelve months</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="container">
+    <div class="pricing-head">
+      <span class="label">The Program</span>
+      <h2 class="h1">Two ways to begin.</h2>
+      <p class="body-l" style="margin-top:var(--s-3)">Both tiers include the full method and all training sessions. The difference is whether you want Anastasia's eye on your specific body.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="plan">
+        <span class="plan-tag">Self-Paced</span>
+        <h3 class="plan-name">The Method</h3>
+        <p class="plan-desc">The full stepper program — everything you need to train correctly, on your own schedule.</p>
+        <div class="plan-price"><span class="num">$49</span><span class="unit">one-time</span></div>
+        <ul class="plan-list">
+          <li>Five progressive stepper sessions across three levels</li>
+          <li>Complete technique video library</li>
+          <li>Thoracic mobility and pelvic floor sessions</li>
+          <li>Nutrition reference guide</li>
+          <li>Lifetime access to all recordings</li>
+        </ul>
+        <button class="plan-btn" onclick="openModal()">Join Waitlist</button>
+      </div>
+      <div class="plan dark">
+        <span class="plan-tag">Most Chosen</span>
+        <h3 class="plan-name">The Method + Personal Review</h3>
+        <p class="plan-desc">Everything in The Method, plus Anastasia's direct attention on how your body moves.</p>
+        <div class="plan-price"><span class="num">$129</span><span class="unit">one-time</span></div>
+        <ul class="plan-list">
+          <li>Everything in The Method</li>
+          <li>Personal movement video review by Anastasia</li>
+          <li>Custom audio response with corrections for your body</li>
+          <li>Email access for follow-up questions</li>
+          <li>Priority placement in future cohorts</li>
+        </ul>
+        <button class="plan-btn" onclick="openModal()">Join Waitlist</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="container">
+    <div class="test-head">
+      <span class="label">What Women Say</span>
+      <h2 class="h1">"I'd been doing this for years. Nobody told me."</h2>
+    </div>
+    <div class="test-grid">
+      <div class="test-card">
+        <p class="test-quote">After the first technique video, I felt muscles in my glutes I'd never felt before. My knees stopped hurting within three days.</p>
+        <div class="test-footer"><div class="test-dot"></div><div><div class="test-name">Cohort 02 participant</div><div class="test-meta">Verified review</div></div></div>
+      </div>
+      <div class="test-card">
+        <p class="test-quote">My posture changed completely. The back rolls I'd had for years started to soften — just from breathing and moving differently.</p>
+        <div class="test-footer"><div class="test-dot"></div><div><div class="test-name">Cohort 01 & 02</div><div class="test-meta">Returning participant</div></div></div>
+      </div>
+      <div class="test-card">
+        <p class="test-quote">I'd watched every stepper video on YouTube. None of them taught what Anastasia teaches. There's just no comparison.</p>
+        <div class="test-footer"><div class="test-dot"></div><div><div class="test-name">Cohort 02 participant</div><div class="test-meta">Verified review</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="container">
+    <div class="faq-grid">
+      <div>
+        <span class="label">FAQ</span>
+        <h2 class="h1" style="margin-top:var(--s-2)">Common questions.</h2>
+      </div>
+      <div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">Do I need a specific stepper?</button>
+          <div class="faq-a">Any mini-stepper with a basic display will work. The method is about technique, not equipment. Anastasia shares recommendations if you're still shopping.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">How many minutes per day?</button>
+          <div class="faq-a">Beginner sessions are around 20 minutes. Once you progress, 30–40 minutes is the sweet spot. Five minutes daily beats an hour once a week.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">I have knee or lower-back pain. Is this safe?</button>
+          <div class="faq-a">The method was largely built to address exactly these issues. That said, please consult your healthcare provider before starting. The personal review tier is especially helpful if you have a history of joint discomfort.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">When does enrollment open?</button>
+          <div class="faq-a">Cohorts open seasonally with limited capacity. The waitlist receives access before it's announced publicly.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">Is this medical advice?</button>
+          <div class="faq-a">No. This is a fitness and movement program based on personal training experience. It is not a substitute for professional medical or physical therapy consultation.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="final">
+  <div class="container">
+    <div class="final-inner">
+      <span class="label">Next Cohort</span>
+      <h2>Spots are limited. The list opens first.</h2>
+      <p>No commitment, no spam — one email when doors open.</p>
+      <a href="#" class="btn-primary" onclick="openModal(); return false;">Join the Waitlist</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">Anastasia.</div>
+      <div class="footer-meta">© 2026 The Anastasia Method. This program is for educational purposes only and does not constitute medical advice. Consult a qualified healthcare professional before beginning any exercise program.</div>
+    </div>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this) closeModal()">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">×</button>
+    <div id="modalContent">
+      <p class="modal-label">Early Access</p>
+      <h3 class="modal-title">Be the first to know when enrollment opens.</h3>
+      <p class="modal-body">Drop your email and you'll receive access before it's announced anywhere else.</p>
+      <form class="modal-form" id="waitlistForm" onsubmit="handleSubmit(event)">
+        <input type="text" name="firstName" placeholder="First name" required autocomplete="given-name" />
+        <input type="email" name="email" placeholder="Email address" required autocomplete="email" />
+        <button type="submit">Notify Me</button>
+      </form>
+      <p class="modal-note">One email. When enrollment opens. Nothing else.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+function openModal() {
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+let modalShown = false;
+setTimeout(() => {
+  if (!modalShown && !sessionStorage.getItem('modalSeen')) {
+    openModal(); modalShown = true;
+    sessionStorage.setItem('modalSeen', '1');
+  }
+}, 8000);
+
+function handleSubmit(e) {
+  e.preventDefault();
+  const f = e.target;
+  const name = f.firstName.value.trim();
+  const email = f.email.value.trim();
+  const leads = JSON.parse(localStorage.getItem('waitlist') || '[]');
+  leads.push({ name, email, ts: new Date().toISOString() });
+  localStorage.setItem('waitlist', JSON.stringify(leads));
+  document.getElementById('modalContent').innerHTML =
+    '<div class="modal-success"><p class="modal-label">Confirmed</p>' +
+    '<h3 class="modal-title">You\'re on the list, ' + name + '.</h3>' +
+    '<p>We\'ll email <strong>' + email + '</strong> when the next cohort opens.</p></div>';
+}
+
+function toggleFaq(btn) { btn.parentElement.classList.toggle('open'); }
+</script>
+
+</body>
+</html>
