@@ -22,7 +22,6 @@
     --grey-2:  #999999;
     --grey-3:  #DDDDDD;
     --grey-4:  #F2F2F2;
-
     --t-display: 60px;
     --t-h1:      42px;
     --t-h2:      30px;
@@ -30,10 +29,8 @@
     --t-body:    15px;
     --t-small:   13px;
     --t-label:   11px;
-
     --s-2: 16px; --s-3: 24px; --s-4: 32px;
     --s-5: 48px; --s-6: 64px; --s-7: 96px;
-
     --max: 1200px;
     --gutter: 32px;
   }
@@ -54,7 +51,6 @@
     color: var(--black);
     background: var(--white);
   }
-
   .container { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
   section { padding: var(--s-7) 0; }
   @media (max-width: 768px) { section { padding: var(--s-6) 0; } }
@@ -130,7 +126,6 @@
     padding: 15px 0; border-bottom: 1px solid var(--black);
   }
   .btn-secondary:hover { color: var(--grey-1); border-color: var(--grey-1); }
-
   .hero-proof {
     display: flex; align-items: center; gap: 12px;
     padding-top: var(--s-3); border-top: 1px solid var(--grey-3);
@@ -143,7 +138,6 @@
   }
   .dots span:nth-child(1) { background: var(--black); }
   .dots span:nth-child(2) { background: var(--grey-1); }
-
   .hero-img {
     aspect-ratio: 4/5; overflow: hidden; background: var(--grey-4);
   }
@@ -178,7 +172,6 @@
     letter-spacing: -0.02em;
   }
   .body-l { font-size: var(--t-body-l); line-height: 1.7; color: var(--grey-1); }
-
   .method-grid {
     display: grid; grid-template-columns: repeat(3,1fr);
     gap: 1px; background: var(--grey-3); border: 1px solid var(--grey-3);
@@ -232,7 +225,6 @@
   .pricing-head .h1 { margin-bottom: var(--s-3); }
   .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-3); }
   @media (max-width: 768px) { .pricing-grid { grid-template-columns: 1fr; } }
-
   .plan {
     border: 1px solid var(--grey-3); padding: var(--s-5);
     display: flex; flex-direction: column; background: var(--white);
@@ -286,29 +278,154 @@
   .plan.dark .plan-btn { background: var(--white); color: var(--black); }
   .plan-btn:hover { opacity: 0.8; }
 
-  /* ── TESTIMONIALS ── */
-  .testimonials { background: var(--grey-4); }
-  .test-head {
-    text-align: center; margin-bottom: var(--s-6);
-    max-width: 560px; margin-left: auto; margin-right: auto;
+  /* ── CAROUSEL ── */
+  .carousel-section { background: var(--grey-4); }
+  .carousel-head { max-width: 680px; margin-bottom: var(--s-6); }
+  .carousel-head .h1 { margin-bottom: var(--s-3); }
+
+  .carousel-wrapper {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    background: var(--white);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
   }
-  .test-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: var(--s-3); }
-  @media (max-width: 768px) { .test-grid { grid-template-columns: 1fr; } }
-  .test-card {
-    background: var(--white); padding: var(--s-4);
-    display: flex; flex-direction: column; gap: var(--s-3);
+
+  .carousel-track {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
   }
-  .test-quote {
-    font-family: 'Fraunces', serif; font-weight: 300;
-    font-size: 18px; line-height: 1.45; flex: 1;
+
+  .carousel-slide {
+    min-width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
   }
-  .test-footer { display: flex; gap: 10px; align-items: center; }
-  .test-dot {
-    width: 32px; height: 32px; border-radius: 50%;
+  @media (max-width: 768px) {
+    .carousel-slide { grid-template-columns: 1fr; }
+  }
+
+  .carousel-image {
+    background: var(--grey-4);
+    min-height: 380px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .carousel-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    max-height: 500px;
+  }
+
+  .carousel-caption {
+    padding: var(--s-5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--white);
+  }
+  .carousel-caption .quote {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 19px;
+    line-height: 1.5;
+    color: var(--black);
+    margin-bottom: var(--s-3);
+    padding-left: 16px;
+    border-left: 2px solid var(--black);
+  }
+  .carousel-caption .meta {
+    font-size: 13px;
+    color: var(--grey-1);
+    line-height: 1.6;
+  }
+  .carousel-caption .meta strong {
+    color: var(--black);
+    font-weight: 500;
+  }
+  .carousel-caption .stats-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 20px;
+    margin-top: var(--s-2);
+    padding-top: var(--s-2);
+    border-top: 1px solid var(--grey-3);
+    font-size: 13px;
+    color: var(--grey-1);
+  }
+  .carousel-caption .stats-row .num {
+    font-weight: 600;
+    color: var(--black);
+  }
+
+  .carousel-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: var(--s-3) 0;
+    background: var(--white);
+    border-top: 1px solid var(--grey-3);
+  }
+  .carousel-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--black);
+    color: var(--white);
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .carousel-btn:hover { opacity: 0.8; transform: scale(0.95); }
+  .carousel-btn:disabled { opacity: 0.3; pointer-events: none; }
+
+  .carousel-dots {
+    display: flex;
+    gap: 8px;
+  }
+  .carousel-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
     background: var(--grey-3);
+    transition: background 0.3s, transform 0.2s;
+    padding: 0;
   }
-  .test-name { font-size: 13px; font-weight: 500; }
-  .test-meta { font-size: 12px; color: var(--grey-2); }
+  .carousel-dot.active {
+    background: var(--black);
+    transform: scale(1.2);
+  }
+  .carousel-dot:hover { background: var(--grey-1); }
+
+  .carousel-counter {
+    font-size: var(--t-small);
+    color: var(--grey-2);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    min-width: 48px;
+    text-align: center;
+  }
+
+  /* ── MANIFESTO ── */
+  .manifesto {
+    background: var(--black); color: var(--white);
+    padding: var(--s-7) 0; text-align: center;
+  }
+  .manifesto-inner { max-width: 720px; margin: 0 auto; }
+  .manifesto .label { color: var(--grey-2); margin-bottom: var(--s-3); display: block; }
+  .manifesto-text {
+    font-family: 'Fraunces', serif; font-weight: 300;
+    font-size: 28px; line-height: 1.45; letter-spacing: -0.015em;
+  }
+  @media (max-width: 768px) { .manifesto-text { font-size: 22px; } }
 
   /* ── FAQ ── */
   .faq-grid {
@@ -412,7 +529,7 @@
 </head>
 <body>
 
-<div class="topbar">Next cohort opens soon · Join the waitlist for early access</div>
+<div class="topbar">Next cohort opens LAUNCH_DATE · Join the waitlist for early access</div>
 
 <nav>
   <div class="nav-inner">
@@ -421,6 +538,7 @@
       <a class="nav-link hide-m" href="#method">Method</a>
       <a class="nav-link hide-m" href="#pricing">Program</a>
       <a class="nav-link hide-m" href="guide.html">Guide</a>
+      <a class="nav-link hide-m" href="https://instagram.com/stepwithana" target="_blank" rel="noopener">Instagram</a>
       <a class="nav-cta" href="#" onclick="openModal(); return false;">Join Waitlist</a>
     </div>
   </div>
@@ -432,15 +550,15 @@
     <div class="hero-grid">
       <div>
         <p class="hero-label">The Anastasia Method</p>
-        <h1 class="hero-title">A stepper program built around how your body is actually supposed to move.</h1>
-        <p class="hero-sub">Most stepper training builds your quads and wears down your knees. This method does the opposite — activating glutes, posterior chain, and core through precise technique.</p>
+        <h1 class="hero-title">Your body can change without being punished into it.</h1>
+        <p class="hero-sub">The Anastasia Method is a stepper program that activates the right muscles, protects your joints, and works with your body — not against it. No restriction. No guilt. Just movement that makes sense.</p>
         <div class="hero-actions">
           <a href="#" class="btn-primary" onclick="openModal(); return false;">Join the Waitlist</a>
           <a href="#method" class="btn-secondary">Explore the Method</a>
         </div>
         <div class="hero-proof">
           <div class="dots"><span></span><span></span><span></span></div>
-          <span>Trusted by 70+ women across two cohorts</span>
+          <span>Trusted by 1000+ women across two cohorts</span>
         </div>
       </div>
       <div class="hero-img">
@@ -455,12 +573,184 @@
   <div class="container">
     <div class="stat-grid">
       <div><div class="stat-num">10 kg</div><div class="stat-label">Lost by Anastasia using<br>her own method</div></div>
-      <div><div class="stat-num">70+</div><div class="stat-label">Women trained across<br>two private cohorts</div></div>
+      <div><div class="stat-num">1000+</div><div class="stat-label">Women trained across<br>two private cohorts</div></div>
       <div><div class="stat-num">365</div><div class="stat-label">Days refining the method<br>in daily practice</div></div>
       <div><div class="stat-num">5</div><div class="stat-label">Days to feel a shift<br>in how you move</div></div>
     </div>
   </div>
 </div>
+
+<!-- CAROUSEL — REAL STORIES -->
+<section class="carousel-section">
+  <div class="container">
+    <div class="carousel-head">
+      <span class="label">Real Stories</span>
+      <h2 class="h1">Where they started.</h2>
+      <p class="body-l" style="margin-top:var(--s-3)">Real screenshots from the private marathon chat. Real women. Real starting points. No filters, no staging — just the actual concerns people bring to the stepper.</p>
+    </div>
+
+    <div class="carousel-wrapper">
+      <div class="carousel-track" id="carouselTrack">
+
+        <!-- SLIDE 1 — Lisa -->
+        <div class="carousel-slide">
+          <div class="carousel-image">
+            <img src="imgs/chat-1.jpg" alt="Chat — Lisa" />
+          </div>
+          <div class="carousel-caption">
+            <div class="quote">"I've been using the stepper for quite a while. Mostly as cardio along with the gym. Now I'm not training regularly. My knees periodically hurt."</div>
+            <div class="meta"><strong>Lisa</strong> · Irregular training · Knee pain</div>
+            <div class="stats-row">
+              <span>🏋️ Used stepper alongside gym</span>
+              <span>🦵 Knee pain reported</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 2 — Weight 53 -->
+        <div class="carousel-slide">
+          <div class="carousel-image">
+            <img src="imgs/chat-2.jpg" alt="Chat — Weight 53" />
+          </div>
+          <div class="carousel-caption">
+            <div class="quote">"I bought the stepper a long time ago, I only used it for a month. For some reason, I didn't like it — it was too difficult, my knees ache. I want to give it a 2nd chance and learn to walk on it correctly."</div>
+            <div class="meta"><strong>Anonymous</strong> · Weight 53kg · Wants to learn correctly</div>
+            <div class="stats-row">
+              <span>⚖️ Weight: <span class="num">53 kg</span></span>
+              <span>📏 Waist: <span class="num">70 cm</span></span>
+              <span>📏 Hips: <span class="num">94 cm</span></span>
+              <span>🦵 Thigh: <span class="num">51 cm</span></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 3 — Anastasia -->
+        <div class="carousel-slide">
+          <div class="carousel-image">
+            <img src="imgs/chat-3.jpg" alt="Chat — Anastasia" />
+          </div>
+          <div class="carousel-caption">
+            <div class="quote">"Good morning! It seems nothing hurts. I work out in intervals, but I can't make it a habit."</div>
+            <div class="meta"><strong>Anastasia</strong> · No pain · Struggles with consistency</div>
+            <div class="stats-row">
+              <span>⏰ Intervals, but no routine</span>
+              <span>💪 No pain reported</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 4 — Olesya -->
+        <div class="carousel-slide">
+          <div class="carousel-image">
+            <img src="imgs/chat-4.jpg" alt="Chat — Olesya" />
+          </div>
+          <div class="carousel-caption">
+            <div class="quote">"Looking at the photos is just awful! I need to do something about my body urgently! Hope I can stick with it and get into the groove 😅"</div>
+            <div class="meta"><strong>Olesya</strong> · Height 170cm · Weight 70kg</div>
+            <div class="stats-row">
+              <span>⚖️ Weight: <span class="num">70 kg</span></span>
+              <span>📏 Height: <span class="num">170 cm</span></span>
+              <span>📏 Waist: <span class="num">79 cm</span></span>
+              <span>📏 Hips: <span class="num">103 cm</span></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 5 — Lilia -->
+        <div class="carousel-slide">
+          <div class="carousel-image">
+            <img src="imgs/chat-5.jpg" alt="Chat — Lilia" />
+          </div>
+          <div class="carousel-caption">
+            <div class="quote">"With the stepper, I'm on formal terms, never exercised before, just purchased. After walking a little, I realized the front surface of the thigh gets fatigued."</div>
+            <div class="meta"><strong>Lilia</strong> · Height 165cm · Weight 72kg · Complete beginner</div>
+            <div class="stats-row">
+              <span>⚖️ Weight: <span class="num">72 kg</span></span>
+              <span>📏 Height: <span class="num">165 cm</span></span>
+              <span>📏 Waist: <span class="num">80 cm</span></span>
+              <span>📏 Hips: <span class="num">104 cm</span></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 6 — Weight 93.3 -->
+        <div class="carousel-slide">
+          <div class="carousel-image">
+            <img src="imgs/chat-6.jpg" alt="Chat — Weight 93.3" />
+          </div>
+          <div class="carousel-caption">
+            <div class="quote">"Used the stepper at most 2-3 times and it just wasn't sticking. After walking for a long time on the stepper, my knees start to hurt and my calves tighten up."</div>
+            <div class="meta"><strong>Anonymous</strong> · Weight 93.3kg · Knee pain · Calves tightening</div>
+            <div class="stats-row">
+              <span>⚖️ Weight: <span class="num">93.3 kg</span></span>
+              <span>📏 Waist: <span class="num">91 cm</span></span>
+              <span>📏 Hips: <span class="num">122 cm</span></span>
+              <span>🦵 Thigh: <span class="num">62 cm</span></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 7 — Alexandra -->
+        <div class="carousel-slide">
+          <div class="carousel-image">
+            <img src="imgs/chat-7.jpg" alt="Chat — Alexandra" />
+          </div>
+          <div class="carousel-caption">
+            <div class="quote">"Hello. I'm a beginner with stepper workouts. When walking, my thighs get tired first. Overall, nothing else bothers me while walking."</div>
+            <div class="meta"><strong>Alexandra</strong> · Beginner · Thigh fatigue</div>
+            <div class="stats-row">
+              <span>🆕 Complete beginner</span>
+              <span>🦵 Thighs tire first</span>
+              <span>✅ No other pain</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 8 — Left knee pain -->
+        <div class="carousel-slide">
+          <div class="carousel-image">
+            <img src="imgs/chat-8.jpg" alt="Chat — Left knee pain" />
+          </div>
+          <div class="carousel-caption">
+            <div class="quote">"Hello everyone! I'm a beginner on the stepper. While walking I noticed that my left knee sometimes hurts, and in general, it seems only my right leg is working — it gets more tense and tires faster."</div>
+            <div class="meta"><strong>Anonymous</strong> · Weight 59kg · Left knee pain · Right leg dominance</div>
+            <div class="stats-row">
+              <span>⚖️ Weight: <span class="num">59 kg</span></span>
+              <span>📏 Waist: <span class="num">83 cm</span></span>
+              <span>📏 Hips: <span class="num">100 cm</span></span>
+              <span>🦵 Right leg works harder</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 9 — Extra / General -->
+        <div class="carousel-slide">
+          <div class="carousel-image">
+            <img src="imgs/chat-9.jpg" alt="Chat — Extra" />
+          </div>
+          <div class="carousel-caption">
+            <div class="quote">"63 members. 17 online. Real conversations. Real struggles. Real progress."</div>
+            <div class="meta"><strong>The Marathon Chat</strong> · 63 members · Live community</div>
+            <div class="stats-row">
+              <span>👥 63 members</span>
+              <span>🟢 17 online</span>
+              <span>💬 Real-time support</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CONTROLS -->
+    <div class="carousel-controls">
+      <button class="carousel-btn" id="prevBtn" aria-label="Previous">‹</button>
+      <div class="carousel-dots" id="dotsContainer"></div>
+      <span class="carousel-counter" id="slideCounter">1 / 9</span>
+      <button class="carousel-btn" id="nextBtn" aria-label="Next">›</button>
+    </div>
+  </div>
+</section>
 
 <!-- METHOD -->
 <section id="method">
@@ -494,7 +784,7 @@
       <div class="method-card">
         <span class="method-num">05 / Diagnostic</span>
         <h3>Personal video review</h3>
-        <p>In the full tier, Anastasia reviews a short clip of how you move and returns a custom audio note — corrections specific to your body.</p>
+        <p>In the full tier, Anastasia reviews a short clip of how you move and returns a custom pdf-file — corrections specific to your body.</p>
       </div>
       <div class="method-card">
         <span class="method-num">06 / Recovery</span>
@@ -510,14 +800,14 @@
   <div class="container">
     <div class="about-grid">
       <div class="about-img">
-        <img src="imgs/anastasia-matt.jpg" alt="Anastasia" />
+        <img src="imgs/anastasia-matt.jpeg" alt="Anastasia" />
       </div>
       <div class="about-text">
         <span class="label">About Anastasia</span>
-        <h2 class="h1">She lost 10 kilograms. Then she spent a year figuring out exactly why it worked.</h2>
-        <p class="body-l">Anastasia trained daily on the stepper for a year while studying the mechanics of every step — what muscles fired, what alignment held, what went wrong when other women tried to copy her routine.</p>
-        <blockquote class="about-quote">"Every woman who comes to me says the same thing: I had no idea I was using the stepper completely wrong."</blockquote>
-        <p class="body-l">What sets this method apart isn't the stepper. It's the diagnostic eye — the ability to look at how you move and name precisely what needs to change.</p>
+        <h2 class="h1">She spent years teaching women how their bodies actually work — long before she ever stood on a stepper.</h2>
+        <p class="body-l">Anastasia's background is in Pilates-informed movement training: years of studying alignment, breath, and the technical details that decide whether an exercise builds your body up or quietly wears it down.</p>
+        <blockquote class="about-quote">"Every woman who comes to me says the same thing: I had no idea I was using the stepper completely wrong. And I had no idea my body could change this way — without suffering."</blockquote>
+        <p class="body-l">By the time she added the stepper to her own routine, she already knew exactly what to look for. The 10 kilograms she lost weren't a lucky accident — they were years of movement expertise, finally applied to a tool nobody had taught her to use correctly either. What sets this method apart isn't the stepper. It's the experience behind it.</p>
         <div class="creds">
           <div>Pilates-informed movement training</div>
           <div>Two completed online cohorts</div>
@@ -548,7 +838,7 @@
           <li>Complete technique video library</li>
           <li>Thoracic mobility and pelvic floor sessions</li>
           <li>Nutrition reference guide</li>
-          <li>Lifetime access to all recordings</li>
+          <li>1 month access to all recordings</li>
         </ul>
         <button class="plan-btn" onclick="openModal()">Join Waitlist</button>
       </div>
@@ -560,7 +850,7 @@
         <ul class="plan-list">
           <li>Everything in The Method</li>
           <li>Personal movement video review by Anastasia</li>
-          <li>Custom audio response with corrections for your body</li>
+          <li>Custom pdf-file with corrections for your body</li>
           <li>Email access for follow-up questions</li>
           <li>Priority placement in future cohorts</li>
         </ul>
@@ -570,26 +860,12 @@
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
-<section class="testimonials">
+<!-- MANIFESTO -->
+<section class="manifesto">
   <div class="container">
-    <div class="test-head">
-      <span class="label">What Women Say</span>
-      <h2 class="h1">"I'd been doing this for years. Nobody told me."</h2>
-    </div>
-    <div class="test-grid">
-      <div class="test-card">
-        <p class="test-quote">After the first technique video, I felt muscles in my glutes I'd never felt before. My knees stopped hurting within three days.</p>
-        <div class="test-footer"><div class="test-dot"></div><div><div class="test-name">Cohort 02 participant</div><div class="test-meta">Verified review</div></div></div>
-      </div>
-      <div class="test-card">
-        <p class="test-quote">My posture changed completely. The back rolls I'd had for years started to soften — just from breathing and moving differently.</p>
-        <div class="test-footer"><div class="test-dot"></div><div><div class="test-name">Cohort 01 & 02</div><div class="test-meta">Returning participant</div></div></div>
-      </div>
-      <div class="test-card">
-        <p class="test-quote">I'd watched every stepper video on YouTube. None of them taught what Anastasia teaches. There's just no comparison.</p>
-        <div class="test-footer"><div class="test-dot"></div><div><div class="test-name">Cohort 02 participant</div><div class="test-meta">Verified review</div></div></div>
-      </div>
+    <div class="manifesto-inner">
+      <span class="label">The Philosophy</span>
+      <p class="manifesto-text">Most fitness programs are built on restriction, punishment, and guilt. This one is built on the idea that your body already knows how to move — it just hasn't been shown properly. Eat more. Move with intention. Watch yourself change.</p>
     </div>
   </div>
 </section>
@@ -632,9 +908,9 @@
 <section class="final">
   <div class="container">
     <div class="final-inner">
-      <span class="label">Next Cohort</span>
-      <h2>Spots are limited. The list opens first.</h2>
-      <p>No commitment, no spam — one email when doors open.</p>
+      <span class="label">Next Cohort — LAUNCH_DATE</span>
+      <h2>Stop fighting your body. Start working with it.</h2>
+      <p>Enrollment opens LAUNCH_DATE. The waitlist gets access first — no commitment, no spam.</p>
       <a href="#" class="btn-primary" onclick="openModal(); return false;">Join the Waitlist</a>
     </div>
   </div>
@@ -644,6 +920,10 @@
   <div class="container">
     <div class="footer-inner">
       <div class="footer-brand">Anastasia.</div>
+      <div style="display:flex;gap:20px;align-items:center">
+        <a href="https://instagram.com/stepwithana" target="_blank" rel="noopener" style="font-size:13px;color:var(--grey-1);border-bottom:1px solid var(--grey-3)">Instagram</a>
+        <a href="guide.html" style="font-size:13px;color:var(--grey-1);border-bottom:1px solid var(--grey-3)">Free Guide</a>
+      </div>
       <div class="footer-meta">© 2026 The Anastasia Method. This program is for educational purposes only and does not constitute medical advice. Consult a qualified healthcare professional before beginning any exercise program.</div>
     </div>
   </div>
@@ -654,20 +934,95 @@
   <div class="modal">
     <button class="modal-close" onclick="closeModal()" aria-label="Close">×</button>
     <div id="modalContent">
-      <p class="modal-label">Early Access</p>
+      <p class="modal-label">Early Access &middot; Opens LAUNCH_DATE</p>
       <h3 class="modal-title">Be the first to know when enrollment opens.</h3>
-      <p class="modal-body">Drop your email and you'll receive access before it's announced anywhere else.</p>
-      <form class="modal-form" id="waitlistForm" onsubmit="handleSubmit(event)">
-        <input type="text" name="firstName" placeholder="First name" required autocomplete="given-name" />
-        <input type="email" name="email" placeholder="Email address" required autocomplete="email" />
+      <p class="modal-body">Anastasia's next cohort begins LAUNCH_DATE. Join the waitlist now and you'll get access before it's announced anywhere else.</p>
+      <form class="modal-form" id="waitlistForm" action="https://YOURACCOUNT.usXX.list-manage.com/subscribe/post?u=YOUR_U&amp;id=YOUR_ID&amp;f_id=YOUR_FID" method="post" target="mc_iframe" onsubmit="handleSubmit(event)">
+        <input type="text" name="FNAME" placeholder="First name" required autocomplete="given-name" />
+        <input type="email" name="EMAIL" placeholder="Email address" required autocomplete="email" />
+        <div style="position:absolute; left:-5000px;" aria-hidden="true">
+          <input type="text" name="b_YOUR_U_YOUR_ID" tabindex="-1" value="" />
+        </div>
         <button type="submit">Notify Me</button>
       </form>
       <p class="modal-note">One email. When enrollment opens. Nothing else.</p>
+      <p class="modal-note" style="margin-top:14px">Not ready yet? <a href="guide.html" style="color:var(--black); border-bottom:1px solid var(--black);">Get the free Stepper Guide</a> instead.</p>
     </div>
   </div>
+  <iframe name="mc_iframe" style="display:none" title="mailchimp-submit"></iframe>
 </div>
 
 <script>
+// ── CAROUSEL ──
+const track = document.getElementById('carouselTrack');
+const slides = track.querySelectorAll('.carousel-slide');
+const totalSlides = slides.length;
+let currentIndex = 0;
+let autoSlideInterval;
+
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+const dotsContainer = document.getElementById('dotsContainer');
+const counter = document.getElementById('slideCounter');
+
+// Build dots
+for (let i = 0; i < totalSlides; i++) {
+  const dot = document.createElement('button');
+  dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+  dot.setAttribute('data-index', i);
+  dot.addEventListener('click', () => goToSlide(i));
+  dotsContainer.appendChild(dot);
+}
+
+function goToSlide(index) {
+  if (index < 0) index = totalSlides - 1;
+  if (index >= totalSlides) index = 0;
+  currentIndex = index;
+  track.style.transform = `translateX(-${currentIndex * 100}%)`;
+  updateUI();
+}
+
+function updateUI() {
+  document.querySelectorAll('.carousel-dot').forEach((dot, i) => {
+    dot.classList.toggle('active', i === currentIndex);
+  });
+  counter.textContent = `${currentIndex + 1} / ${totalSlides}`;
+  prevBtn.disabled = currentIndex === 0;
+  nextBtn.disabled = currentIndex === totalSlides - 1;
+}
+
+function nextSlide() { goToSlide(currentIndex + 1); }
+function prevSlide() { goToSlide(currentIndex - 1); }
+
+prevBtn.addEventListener('click', prevSlide);
+nextBtn.addEventListener('click', nextSlide);
+
+// Keyboard arrows
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowLeft') prevSlide();
+  if (e.key === 'ArrowRight') nextSlide();
+});
+
+// Auto-slide
+function startAutoSlide() {
+  stopAutoSlide();
+  autoSlideInterval = setInterval(nextSlide, 6000);
+}
+function stopAutoSlide() { clearInterval(autoSlideInterval); }
+
+startAutoSlide();
+
+// Pause on hover
+const wrapper = document.querySelector('.carousel-wrapper');
+wrapper.addEventListener('mouseenter', stopAutoSlide);
+wrapper.addEventListener('mouseleave', startAutoSlide);
+
+// ── FAQ ──
+function toggleFaq(btn) {
+  btn.parentElement.classList.toggle('open');
+}
+
+// ── MODAL ──
 function openModal() {
   document.getElementById('modalOverlay').classList.add('open');
   document.body.style.overflow = 'hidden';
@@ -687,20 +1042,19 @@ setTimeout(() => {
 }, 8000);
 
 function handleSubmit(e) {
-  e.preventDefault();
   const f = e.target;
-  const name = f.firstName.value.trim();
-  const email = f.email.value.trim();
+  const name = f.FNAME.value.trim();
+  const email = f.EMAIL.value.trim();
   const leads = JSON.parse(localStorage.getItem('waitlist') || '[]');
   leads.push({ name, email, ts: new Date().toISOString() });
   localStorage.setItem('waitlist', JSON.stringify(leads));
-  document.getElementById('modalContent').innerHTML =
-    '<div class="modal-success"><p class="modal-label">Confirmed</p>' +
-    '<h3 class="modal-title">You\'re on the list, ' + name + '.</h3>' +
-    '<p>We\'ll email <strong>' + email + '</strong> when the next cohort opens.</p></div>';
+  setTimeout(() => {
+    document.getElementById('modalContent').innerHTML =
+      '<div class="modal-success"><p class="modal-label">Confirmed</p>' +
+      '<h3 class="modal-title">You\'re on the list, ' + name + '.</h3>' +
+      '<p>We\'ll email <strong>' + email + '</strong> when the next cohort opens.</p></div>';
+  }, 300);
 }
-
-function toggleFaq(btn) { btn.parentElement.classList.toggle('open'); }
 </script>
 
 </body>
