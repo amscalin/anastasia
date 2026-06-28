@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
@@ -22,7 +22,6 @@
     --grey-2:  #999999;
     --grey-3:  #DDDDDD;
     --grey-4:  #F2F2F2;
-
     --t-display: 60px;
     --t-h1:      42px;
     --t-h2:      30px;
@@ -30,10 +29,8 @@
     --t-body:    15px;
     --t-small:   13px;
     --t-label:   11px;
-
     --s-2: 16px; --s-3: 24px; --s-4: 32px;
     --s-5: 48px; --s-6: 64px; --s-7: 96px;
-
     --max: 1200px;
     --gutter: 32px;
   }
@@ -54,7 +51,6 @@
     color: var(--black);
     background: var(--white);
   }
-
   .container { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
   section { padding: var(--s-7) 0; }
   @media (max-width: 768px) { section { padding: var(--s-6) 0; } }
@@ -130,7 +126,6 @@
     padding: 15px 0; border-bottom: 1px solid var(--black);
   }
   .btn-secondary:hover { color: var(--grey-1); border-color: var(--grey-1); }
-
   .hero-proof {
     display: flex; align-items: center; gap: 12px;
     padding-top: var(--s-3); border-top: 1px solid var(--grey-3);
@@ -143,7 +138,6 @@
   }
   .dots span:nth-child(1) { background: var(--black); }
   .dots span:nth-child(2) { background: var(--grey-1); }
-
   .hero-img {
     aspect-ratio: 4/5; overflow: hidden; background: var(--grey-4);
   }
@@ -178,7 +172,6 @@
     letter-spacing: -0.02em;
   }
   .body-l { font-size: var(--t-body-l); line-height: 1.7; color: var(--grey-1); }
-
   .method-grid {
     display: grid; grid-template-columns: repeat(3,1fr);
     gap: 1px; background: var(--grey-3); border: 1px solid var(--grey-3);
@@ -232,7 +225,6 @@
   .pricing-head .h1 { margin-bottom: var(--s-3); }
   .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-3); }
   @media (max-width: 768px) { .pricing-grid { grid-template-columns: 1fr; } }
-
   .plan {
     border: 1px solid var(--grey-3); padding: var(--s-5);
     display: flex; flex-direction: column; background: var(--white);
@@ -286,14 +278,9 @@
   .plan.dark .plan-btn { background: var(--white); color: var(--black); }
   .plan-btn:hover { opacity: 0.8; }
 
-  /* ── CAROUSEL / GALLERY ── */
-  .carousel-section {
-    background: var(--grey-4);
-  }
-  .carousel-head {
-    max-width: 680px;
-    margin-bottom: var(--s-6);
-  }
+  /* ── CAROUSEL ── */
+  .carousel-section { background: var(--grey-4); }
+  .carousel-head { max-width: 680px; margin-bottom: var(--s-6); }
   .carousel-head .h1 { margin-bottom: var(--s-3); }
 
   .carousel-wrapper {
@@ -317,14 +304,12 @@
     gap: 0;
   }
   @media (max-width: 768px) {
-    .carousel-slide {
-      grid-template-columns: 1fr;
-    }
+    .carousel-slide { grid-template-columns: 1fr; }
   }
 
   .carousel-image {
-    background: var(--grey-3);
-    min-height: 400px;
+    background: var(--grey-4);
+    min-height: 380px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -334,7 +319,7 @@
     width: 100%;
     height: 100%;
     object-fit: contain;
-    max-height: 600px;
+    max-height: 500px;
   }
 
   .carousel-caption {
@@ -347,7 +332,7 @@
   .carousel-caption .quote {
     font-family: 'Fraunces', serif;
     font-weight: 300;
-    font-size: 20px;
+    font-size: 19px;
     line-height: 1.5;
     color: var(--black);
     margin-bottom: var(--s-3);
@@ -372,11 +357,6 @@
     border-top: 1px solid var(--grey-3);
     font-size: 13px;
     color: var(--grey-1);
-  }
-  .carousel-caption .stats-row span {
-    display: flex;
-    align-items: center;
-    gap: 4px;
   }
   .carousel-caption .stats-row .num {
     font-weight: 600;
@@ -404,14 +384,8 @@
     justify-content: center;
     transition: opacity 0.2s, transform 0.2s;
   }
-  .carousel-btn:hover {
-    opacity: 0.8;
-    transform: scale(0.95);
-  }
-  .carousel-btn:disabled {
-    opacity: 0.3;
-    pointer-events: none;
-  }
+  .carousel-btn:hover { opacity: 0.8; transform: scale(0.95); }
+  .carousel-btn:disabled { opacity: 0.3; pointer-events: none; }
 
   .carousel-dots {
     display: flex;
@@ -429,9 +403,7 @@
     background: var(--black);
     transform: scale(1.2);
   }
-  .carousel-dot:hover {
-    background: var(--grey-1);
-  }
+  .carousel-dot:hover { background: var(--grey-1); }
 
   .carousel-counter {
     font-size: var(--t-small);
@@ -623,7 +595,7 @@
         <!-- SLIDE 1 — Lisa -->
         <div class="carousel-slide">
           <div class="carousel-image">
-            <img src="imgs/chat-1.jpg" alt="Chat screenshot — Lisa" />
+            <img src="imgs/chat-1.jpg" alt="Chat — Lisa" />
           </div>
           <div class="carousel-caption">
             <div class="quote">"I've been using the stepper for quite a while. Mostly as cardio along with the gym. Now I'm not training regularly. My knees periodically hurt."</div>
@@ -638,10 +610,10 @@
         <!-- SLIDE 2 — Weight 53 -->
         <div class="carousel-slide">
           <div class="carousel-image">
-            <img src="imgs/chat-2.jpg" alt="Chat screenshot — Weight 53" />
+            <img src="imgs/chat-2.jpg" alt="Chat — Weight 53" />
           </div>
           <div class="carousel-caption">
-            <div class="quote">"I bought the stepper a long time ago, I only used it for a month. For some reason, I didn't like it — it was too difficult, my knees ache. I want to give it a 2nd chance."</div>
+            <div class="quote">"I bought the stepper a long time ago, I only used it for a month. For some reason, I didn't like it — it was too difficult, my knees ache. I want to give it a 2nd chance and learn to walk on it correctly."</div>
             <div class="meta"><strong>Anonymous</strong> · Weight 53kg · Wants to learn correctly</div>
             <div class="stats-row">
               <span>⚖️ Weight: <span class="num">53 kg</span></span>
@@ -655,7 +627,7 @@
         <!-- SLIDE 3 — Anastasia -->
         <div class="carousel-slide">
           <div class="carousel-image">
-            <img src="imgs/chat-3.jpg" alt="Chat screenshot — Anastasia" />
+            <img src="imgs/chat-3.jpg" alt="Chat — Anastasia" />
           </div>
           <div class="carousel-caption">
             <div class="quote">"Good morning! It seems nothing hurts. I work out in intervals, but I can't make it a habit."</div>
@@ -670,10 +642,29 @@
         <!-- SLIDE 4 — Olesya -->
         <div class="carousel-slide">
           <div class="carousel-image">
-            <img src="imgs/chat-4.jpg" alt="Chat screenshot — Olesya" />
+            <img src="imgs/chat-4.jpg" alt="Chat — Olesya" />
           </div>
           <div class="carousel-caption">
             <div class="quote">"Looking at the photos is just awful! I need to do something about my body urgently! Hope I can stick with it and get into the groove 😅"</div>
             <div class="meta"><strong>Olesya</strong> · Height 170cm · Weight 70kg</div>
             <div class="stats-row">
-              <span>⚖️ Weight: <span
+              <span>⚖️ Weight: <span class="num">70 kg</span></span>
+              <span>📏 Height: <span class="num">170 cm</span></span>
+              <span>📏 Waist: <span class="num">79 cm</span></span>
+              <span>📏 Hips: <span class="num">103 cm</span></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 5 — Lilia -->
+        <div class="carousel-slide">
+          <div class="carousel-image">
+            <img src="imgs/chat-5.jpg" alt="Chat — Lilia" />
+          </div>
+          <div class="carousel-caption">
+            <div class="quote">"With the stepper, I'm on formal terms, never exercised before, just purchased. After walking a little, I realized the front surface of the thigh gets fatigued."</div>
+            <div class="meta"><strong>Lilia</strong> · Height 165cm · Weight 72kg · Complete beginner</div>
+            <div class="stats-row">
+              <span>⚖️ Weight: <span class="num">72 kg</span></span>
+              <span>📏 Height: <span class="num">165 cm</span></span>
+              <span>📏 Waist: <span class="num">80
