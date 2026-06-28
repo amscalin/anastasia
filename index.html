@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
@@ -286,124 +286,160 @@
   .plan.dark .plan-btn { background: var(--white); color: var(--black); }
   .plan-btn:hover { opacity: 0.8; }
 
-  /* ── TRANSFORMATIONS ── */
-  .transformation-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--s-4);
-  }
-  @media (max-width: 768px) {
-    .transformation-grid { grid-template-columns: 1fr; }
-  }
-
-  .transform-card {
-    border: 1px solid var(--grey-3);
-    background: var(--white);
-    overflow: hidden;
-    transition: box-shadow 0.2s;
-  }
-  .transform-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.05); }
-  .transform-card.highlight {
-    border-color: var(--black);
-    grid-column: 1 / -1;
-  }
-  @media (max-width: 768px) {
-    .transform-card.highlight { grid-column: 1; }
-  }
-
-  .transform-images {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    aspect-ratio: 16/9;
+  /* ── CAROUSEL / GALLERY ── */
+  .carousel-section {
     background: var(--grey-4);
-    position: relative;
   }
-  .transform-img {
+  .carousel-head {
+    max-width: 680px;
+    margin-bottom: var(--s-6);
+  }
+  .carousel-head .h1 { margin-bottom: var(--s-3); }
+
+  .carousel-wrapper {
     position: relative;
     overflow: hidden;
+    border-radius: 8px;
+    background: var(--white);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
   }
-  .transform-img img {
+
+  .carousel-track {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
+  }
+
+  .carousel-slide {
+    min-width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+  @media (max-width: 768px) {
+    .carousel-slide {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .carousel-image {
+    background: var(--grey-3);
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .carousel-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-  }
-  .badge {
-    position: absolute;
-    top: 12px;
-    left: 12px;
-    background: rgba(0,0,0,0.7);
-    color: white;
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    padding: 4px 12px;
-    border-radius: 20px;
-    backdrop-filter: blur(4px);
-  }
-  .transform-img.after .badge {
-    background: rgba(17,17,17,0.85);
+    object-fit: contain;
+    max-height: 600px;
   }
 
-  .transform-body {
-    padding: var(--s-4);
-  }
-  .transform-header {
+  .carousel-caption {
+    padding: var(--s-5);
     display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 12px;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--white);
   }
-  .transform-name {
-    font-family: 'Fraunces', serif;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 1.2;
-    letter-spacing: -0.01em;
-  }
-  .transform-meta {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--grey-2);
-  }
-  .transform-quote {
+  .carousel-caption .quote {
     font-family: 'Fraunces', serif;
     font-weight: 300;
-    font-size: 17px;
+    font-size: 20px;
     line-height: 1.5;
-    color: var(--grey-1);
+    color: var(--black);
     margin-bottom: var(--s-3);
     padding-left: 16px;
     border-left: 2px solid var(--black);
   }
-  .transform-stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
+  .carousel-caption .meta {
+    font-size: 13px;
+    color: var(--grey-1);
+    line-height: 1.6;
+  }
+  .carousel-caption .meta strong {
+    color: var(--black);
+    font-weight: 500;
+  }
+  .carousel-caption .stats-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 20px;
+    margin-top: var(--s-2);
     padding-top: var(--s-2);
     border-top: 1px solid var(--grey-3);
+    font-size: 13px;
+    color: var(--grey-1);
   }
-  .transform-stats div {
-    text-align: center;
+  .carousel-caption .stats-row span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
   }
-  .transform-stats .num {
-    display: block;
-    font-family: 'Fraunces', serif;
-    font-weight: 300;
-    font-size: 22px;
-    line-height: 1.2;
-    letter-spacing: -0.02em;
+  .carousel-caption .stats-row .num {
+    font-weight: 600;
+    color: var(--black);
   }
-  .transform-stats .lbl {
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
+
+  .carousel-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: var(--s-3) 0;
+    background: var(--white);
+    border-top: 1px solid var(--grey-3);
+  }
+  .carousel-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--black);
+    color: var(--white);
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .carousel-btn:hover {
+    opacity: 0.8;
+    transform: scale(0.95);
+  }
+  .carousel-btn:disabled {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+
+  .carousel-dots {
+    display: flex;
+    gap: 8px;
+  }
+  .carousel-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--grey-3);
+    transition: background 0.3s, transform 0.2s;
+    padding: 0;
+  }
+  .carousel-dot.active {
+    background: var(--black);
+    transform: scale(1.2);
+  }
+  .carousel-dot:hover {
+    background: var(--grey-1);
+  }
+
+  .carousel-counter {
+    font-size: var(--t-small);
     color: var(--grey-2);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    min-width: 48px;
+    text-align: center;
   }
 
   /* ── MANIFESTO ── */
@@ -572,121 +608,72 @@
   </div>
 </div>
 
-<!-- BEFORE / AFTER -->
-<section class="beforeafter">
+<!-- CAROUSEL — REAL STORIES -->
+<section class="carousel-section">
   <div class="container">
-    <div class="ba-head">
-      <span class="label">Real-Life Transformations</span>
-      <h2 class="h1">Not weight loss before & after. Body alignment before & after.</h2>
-      <p class="body-l">Visible improvements in posture, waist definition, shoulder positioning, and overall symmetry — from applying the movement principles taught in the program.</p>
-    </div>
-    <div class="ba-grid">
-      <div class="ba-slot">
-        <div class="ba-imgs">
-          <div class="ba-ph">Before</div>
-          <div class="ba-ph">After</div>
-          <!-- Replace placeholders with: <img src="imgs/ba-1-before.jpg" alt="Before"> <img src="imgs/ba-1-after.jpg" alt="After"> -->
-        </div>
-        <div class="ba-caption">
-          <div class="ba-label">Posture · Back Alignment</div>
-          <p>Improved thoracic extension and reduced upper-back rounding after applying breathing and mobility cues from the program.</p>
-        </div>
-      </div>
-      <div class="ba-slot">
-        <div class="ba-imgs">
-          <div class="ba-ph">Before</div>
-          <div class="ba-ph">After</div>
-          <!-- Replace placeholders with: <img src="imgs/ba-2-before.jpg" alt="Before"> <img src="imgs/ba-2-after.jpg" alt="After"> -->
-        </div>
-        <div class="ba-caption">
-          <div class="ba-label">Waist · Body Symmetry</div>
-          <p>Visible change in waist definition and shoulder positioning. Same participant across Cohort 01 and Cohort 02.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PROOF OF METHOD — REAL TRANSFORMATIONS -->
-<section class="proof">
-  <div class="container">
-    <div class="proof-head">
-      <span class="label">Real Transformations</span>
-      <h2 class="h1">Real women. Real results. No filters.</h2>
-      <p class="body-l" style="margin-top:var(--s-3)">These are actual participants from our private cohorts. Every transformation was achieved using the Anastasia Method — no crash diets, no punishment.</p>
+    <div class="carousel-head">
+      <span class="label">Real Stories</span>
+      <h2 class="h1">Where they started.</h2>
+      <p class="body-l" style="margin-top:var(--s-3)">Real screenshots from the private marathon chat. Real women. Real starting points. No filters, no staging — just the actual concerns people bring to the stepper.</p>
     </div>
 
-    <div class="transformation-grid">
+    <div class="carousel-wrapper">
+      <div class="carousel-track" id="carouselTrack">
 
-      <!-- TRANSFORMATION 1 — Sonya -->
-      <div class="transform-card">
-        <div class="transform-images">
-          <div class="transform-img before">
-            <img src="imgs/sonya-before.jpg" alt="Sonya — Before" />
-            <span class="badge">Before</span>
+        <!-- SLIDE 1 — Lisa -->
+        <div class="carousel-slide">
+          <div class="carousel-image">
+            <img src="imgs/chat-1.jpg" alt="Chat screenshot — Lisa" />
           </div>
-          <div class="transform-img after">
-            <img src="imgs/sonya-after.jpg" alt="Sonya — After" />
-            <span class="badge">After</span>
-          </div>
-        </div>
-        <div class="transform-body">
-          <div class="transform-header">
-            <h3 class="transform-name">Sonya</h3>
-            <span class="transform-meta">8 weeks · Post-pregnancy</span>
-          </div>
-          <blockquote class="transform-quote">
-            "I did the first workout and stopped at 25 minutes — just like they said. No heroics. And for the first time in years, I felt lightness instead of exhaustion. My knees stopped hurting within days."
-          </blockquote>
-          <div class="transform-stats">
-            <div><span class="num">-6 cm</span> <span class="lbl">Waist</span></div>
-            <div><span class="num">-4 kg</span> <span class="lbl">Weight</span></div>
-            <div><span class="num">100%</span> <span class="lbl">Pain-free stepping</span></div>
+          <div class="carousel-caption">
+            <div class="quote">"I've been using the stepper for quite a while. Mostly as cardio along with the gym. Now I'm not training regularly. My knees periodically hurt."</div>
+            <div class="meta"><strong>Lisa</strong> · Irregular training · Knee pain</div>
+            <div class="stats-row">
+              <span>🏋️ Used stepper alongside gym</span>
+              <span>🦵 Knee pain reported</span>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- TRANSFORMATION 2 — Valentina -->
-      <div class="transform-card">
-        <div class="transform-images">
-          <div class="transform-img before">
-            <img src="imgs/valentina-before.jpg" alt="Valentina — Before" />
-            <span class="badge">Before</span>
+        <!-- SLIDE 2 — Weight 53 -->
+        <div class="carousel-slide">
+          <div class="carousel-image">
+            <img src="imgs/chat-2.jpg" alt="Chat screenshot — Weight 53" />
           </div>
-          <div class="transform-img after">
-            <img src="imgs/valentina-after.jpg" alt="Valentina — After" />
-            <span class="badge">After</span>
-          </div>
-        </div>
-        <div class="transform-body">
-          <div class="transform-header">
-            <h3 class="transform-name">Valentina</h3>
-            <span class="transform-meta">6 weeks · First cohort</span>
-          </div>
-          <blockquote class="transform-quote">
-            "Fuuuh. That was intense. I did the whole workout and I was soaked. I never thought simple stepping movements could make me feel my muscles activate and stretch at the same time. And this was just the light day?"
-          </blockquote>
-          <div class="transform-stats">
-            <div><span class="num">-5 cm</span> <span class="lbl">Waist</span></div>
-            <div><span class="num">-3 kg</span> <span class="lbl">Weight</span></div>
-            <div><span class="num">✓</span> <span class="lbl">Glute activation</span></div>
+          <div class="carousel-caption">
+            <div class="quote">"I bought the stepper a long time ago, I only used it for a month. For some reason, I didn't like it — it was too difficult, my knees ache. I want to give it a 2nd chance."</div>
+            <div class="meta"><strong>Anonymous</strong> · Weight 53kg · Wants to learn correctly</div>
+            <div class="stats-row">
+              <span>⚖️ Weight: <span class="num">53 kg</span></span>
+              <span>📏 Waist: <span class="num">70 cm</span></span>
+              <span>📏 Hips: <span class="num">94 cm</span></span>
+              <span>🦵 Thigh: <span class="num">51 cm</span></span>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- TRANSFORMATION 3 — Anna -->
-      <div class="transform-card">
-        <div class="transform-images">
-          <div class="transform-img before">
-            <img src="imgs/anna-before.jpg" alt="Anna — Before" />
-            <span class="badge">Before</span>
+        <!-- SLIDE 3 — Anastasia -->
+        <div class="carousel-slide">
+          <div class="carousel-image">
+            <img src="imgs/chat-3.jpg" alt="Chat screenshot — Anastasia" />
           </div>
-          <div class="transform-img after">
-            <img src="imgs/anna-after.jpg" alt="Anna — After" />
-            <span class="badge">After</span>
+          <div class="carousel-caption">
+            <div class="quote">"Good morning! It seems nothing hurts. I work out in intervals, but I can't make it a habit."</div>
+            <div class="meta"><strong>Anastasia</strong> · No pain · Struggles with consistency</div>
+            <div class="stats-row">
+              <span>⏰ Intervals, but no routine</span>
+              <span>💪 No pain reported</span>
+            </div>
           </div>
         </div>
-        <div class="transform-body">
-          <div class="transform-header">
-            <h3 class="transform-name">Anna</h3>
-           
+
+        <!-- SLIDE 4 — Olesya -->
+        <div class="carousel-slide">
+          <div class="carousel-image">
+            <img src="imgs/chat-4.jpg" alt="Chat screenshot — Olesya" />
+          </div>
+          <div class="carousel-caption">
+            <div class="quote">"Looking at the photos is just awful! I need to do something about my body urgently! Hope I can stick with it and get into the groove 😅"</div>
+            <div class="meta"><strong>Olesya</strong> · Height 170cm · Weight 70kg</div>
+            <div class="stats-row">
+              <span>⚖️ Weight: <span
