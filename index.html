@@ -932,17 +932,17 @@
     <button class="modal-close" onclick="closeModal()" aria-label="Close">×</button>
     <div id="modalContent">
       <span class="modal-badge">🎁 Free Download</span>
-      <h3 class="modal-title">The Complete Stepper Guide</h3>
-      <p class="modal-body">Get <strong>instant access</strong> to the full guide — how to set up your stepper, correct your form, and start seeing results in just 5 days. Plus, we'll notify you when the next cohort opens on <strong>July 20</strong>.</p>
+      <h3 class="modal-title">Get Your Free Stepper Guide</h3>
+      <p class="modal-body">Enter your email and get <strong>instant access</strong> to the complete guide — plus we'll notify you when the next cohort opens on <strong>July 20</strong>.</p>
       <form class="modal-form" id="waitlistForm" action="https://app.us2.list-manage.com/subscribe/post?u=e25034a6bb1f5d9cd9dee3c0a&amp;id=f727b9e24a&amp;f_id=00b4fce1f0" method="post" target="mc_iframe" onsubmit="handleSubmit(event)">
         <input type="text" name="FNAME" placeholder="First name" required autocomplete="given-name" />
         <input type="email" name="EMAIL" placeholder="Email address" required autocomplete="email" />
         <div style="position:absolute; left:-5000px;" aria-hidden="true">
           <input type="text" name="b_e25034a6bb1f5d9cd9dee3c0a_f727b9e24a" tabindex="-1" value="" />
         </div>
-        <button type="submit">Send Me the Free Guide →</button>
+        <button type="submit">Get the Guide Now →</button>
       </form>
-      <p class="modal-note">No spam. One email when the guide is ready, and one when enrollment opens.</p>
+      <p class="modal-note">No spam. One email when the cohort opens on July 20.</p>
     </div>
   </div>
   <iframe name="mc_iframe" style="display:none" title="mailchimp-submit"></iframe>
@@ -1049,11 +1049,11 @@ function handleSubmit(e) {
   setTimeout(() => {
     document.getElementById('modalContent').innerHTML =
       '<div class="modal-success">' +
-      '<span class="modal-badge">✅ Check Your Email</span>' +
-      '<h3 class="modal-title">You\'re all set, ' + name + '.</h3>' +
-      '<p>We just sent the <strong>Complete Stepper Guide</strong> to <strong>' + email + '</strong>. Check your inbox (and spam, just in case).</p>' +
-      '<p style="margin-top:12px;font-size:13px;color:var(--grey-2);">We\'ll also notify you when the next cohort opens on <strong>July 20</strong>.</p>' +
-      '<a href="#" class="btn-primary" style="display:inline-block;margin-top:20px;" onclick="closeModal();return false;">Continue to Site →</a>' +
+      '<span class="modal-badge">🎉 You\'re In!</span>' +
+      '<h3 class="modal-title">Your guide is ready, ' + name + '.</h3>' +
+      '<p>Click the button below to access the <strong>Complete Stepper Guide</strong> right now.</p>' +
+      '<a href="https://anastasia-three.vercel.app/guide.html" target="_blank" class="btn-primary" style="display:inline-block;margin-top:16px;background:var(--black);color:var(--white);padding:14px 32px;font-size:var(--t-small);font-weight:500;letter-spacing:0.04em;transition:opacity 0.2s;text-decoration:none;">📖 Read the Guide Now</a>' +
+      '<p style="margin-top:16px;font-size:13px;color:var(--grey-2);">We\'ll also email you when the next cohort opens on <strong>July 20</strong>.</p>' +
       '</div>';
   }, 400);
 }
