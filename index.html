@@ -341,18 +341,14 @@
   }
   .carousel-caption .meta {
     font-size: 13px;
-    color: var(--grey-1);
+    color: var(--grey-2);
     line-height: 1.6;
-  }
-  .carousel-caption .meta strong {
-    color: var(--black);
-    font-weight: 500;
+    margin-bottom: 8px;
   }
   .carousel-caption .stats-row {
     display: flex;
     flex-wrap: wrap;
     gap: 12px 20px;
-    margin-top: var(--s-2);
     padding-top: var(--s-2);
     border-top: 1px solid var(--grey-3);
     font-size: 13px;
@@ -472,44 +468,53 @@
   .footer-brand { font-family: 'Fraunces', serif; font-weight: 500; font-size: 16px; }
   .footer-meta { font-size: 12px; color: var(--grey-2); max-width: 560px; line-height: 1.6; }
 
-  /* ── MODAL ── */
+  /* ── MODAL (Welcome Popup) ── */
   .modal-overlay {
     position: fixed; inset: 0; z-index: 100;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.6);
     display: none; align-items: center; justify-content: center;
     padding: 20px;
   }
   .modal-overlay.open { display: flex; }
   .modal {
-    background: var(--white); max-width: 440px; width: 100%;
+    background: var(--white); max-width: 480px; width: 100%;
     padding: var(--s-5); position: relative;
     animation: slideUp 0.3s ease;
   }
   @keyframes slideUp {
-    from { opacity: 0; transform: translateY(16px); }
+    from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
   }
   .modal-close {
-    position: absolute; top: 16px; right: 18px;
-    font-size: 20px; color: var(--grey-2);
-    width: 28px; height: 28px;
+    position: absolute; top: 14px; right: 16px;
+    font-size: 22px; color: var(--grey-2);
+    width: 32px; height: 32px;
     display: flex; align-items: center; justify-content: center;
   }
   .modal-close:hover { color: var(--black); }
-  .modal-label {
-    font-size: var(--t-label); letter-spacing: 0.16em;
-    text-transform: uppercase; font-weight: 500;
-    color: var(--grey-2); margin-bottom: var(--s-2);
+  .modal-badge {
+    display: inline-block;
+    background: var(--black); color: var(--white);
+    font-size: 10px; font-weight: 500;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    padding: 4px 14px; border-radius: 20px;
+    margin-bottom: var(--s-2);
   }
   .modal-title {
     font-family: 'Fraunces', serif; font-weight: 300;
-    font-size: 26px; line-height: 1.15; letter-spacing: -0.02em;
-    margin-bottom: var(--s-2);
+    font-size: 28px; line-height: 1.15; letter-spacing: -0.02em;
+    margin-bottom: 12px;
   }
-  .modal-body { font-size: 14px; color: var(--grey-1); line-height: 1.65; margin-bottom: var(--s-3); }
+  .modal-body {
+    font-size: 15px;
+    color: var(--grey-1);
+    line-height: 1.65;
+    margin-bottom: var(--s-3);
+  }
+  .modal-body strong { color: var(--black); }
   .modal-form { display: flex; flex-direction: column; gap: 10px; }
   .modal-form input {
-    width: 100%; padding: 13px 14px;
+    width: 100%; padding: 14px 16px;
     border: 1px solid var(--grey-3); background: var(--white);
     font-family: 'Inter', sans-serif; font-size: 14px; color: var(--black);
     outline: none; transition: border-color 0.2s;
@@ -517,19 +522,30 @@
   .modal-form input:focus { border-color: var(--black); }
   .modal-form button {
     background: var(--black); color: var(--white);
-    padding: 14px; font-size: var(--t-small); font-weight: 500;
+    padding: 15px; font-size: var(--t-small); font-weight: 500;
     letter-spacing: 0.04em; margin-top: 4px; transition: opacity 0.2s;
   }
   .modal-form button:hover { opacity: 0.8; }
-  .modal-note { font-size: 11px; color: var(--grey-2); margin-top: 12px; text-align: center; }
-  .modal-success { text-align: center; padding: var(--s-3) 0; }
+  .modal-note {
+    font-size: 11px;
+    color: var(--grey-2);
+    margin-top: 14px;
+    text-align: center;
+  }
+  .modal-success {
+    text-align: center;
+    padding: var(--s-3) 0;
+  }
   .modal-success .modal-title { margin-bottom: var(--s-2); }
-  .modal-success p { font-size: 14px; color: var(--grey-1); }
+  .modal-success p { font-size: 15px; color: var(--grey-1); line-height: 1.6; }
+  .modal-success .btn-primary {
+    margin-top: var(--s-3);
+  }
 </style>
 </head>
 <body>
 
-<div class="topbar">Next cohort opens LAUNCH_DATE · Join the waitlist for early access</div>
+<div class="topbar">Next cohort opens July 20 · Join the waitlist for early access</div>
 
 <nav>
   <div class="nav-inner">
@@ -539,7 +555,7 @@
       <a class="nav-link hide-m" href="#pricing">Program</a>
       <a class="nav-link hide-m" href="guide.html">Guide</a>
       <a class="nav-link hide-m" href="https://instagram.com/stepwithana" target="_blank" rel="noopener">Instagram</a>
-      <a class="nav-cta" href="#" onclick="openModal(); return false;">Join Waitlist</a>
+      <a class="nav-cta" href="#" onclick="openModal(); return false;">Get Free Guide</a>
     </div>
   </div>
 </nav>
@@ -553,7 +569,7 @@
         <h1 class="hero-title">Your body can change without being punished into it.</h1>
         <p class="hero-sub">The Anastasia Method is a stepper program that activates the right muscles, protects your joints, and works with your body — not against it. No restriction. No guilt. Just movement that makes sense.</p>
         <div class="hero-actions">
-          <a href="#" class="btn-primary" onclick="openModal(); return false;">Join the Waitlist</a>
+          <a href="#" class="btn-primary" onclick="openModal(); return false;">Get the Free Guide</a>
           <a href="#method" class="btn-secondary">Explore the Method</a>
         </div>
         <div class="hero-proof">
@@ -592,61 +608,60 @@
     <div class="carousel-wrapper">
       <div class="carousel-track" id="carouselTrack">
 
-        <!-- SLIDE 1 — Lisa -->
+        <!-- SLIDE 1 -->
         <div class="carousel-slide">
           <div class="carousel-image">
-            <img src="imgs/chat-1.jpg" alt="Chat — Lisa" />
+            <img src="imgs/chat-1.jpg" alt="Chat screenshot" />
           </div>
           <div class="carousel-caption">
             <div class="quote">"I've been using the stepper for quite a while. Mostly as cardio along with the gym. Now I'm not training regularly. My knees periodically hurt."</div>
-            <div class="meta"><strong>Lisa</strong> · Irregular training · Knee pain</div>
+            <div class="meta">Used stepper alongside gym · Knee pain reported</div>
             <div class="stats-row">
-              <span>🏋️ Used stepper alongside gym</span>
-              <span>🦵 Knee pain reported</span>
+              <span>🏋️ Irregular training</span>
+              <span>🦵 Knee pain</span>
             </div>
           </div>
         </div>
 
-        <!-- SLIDE 2 — Weight 53 -->
+        <!-- SLIDE 2 -->
         <div class="carousel-slide">
           <div class="carousel-image">
-            <img src="imgs/chat-2.jpg" alt="Chat — Weight 53" />
+            <img src="imgs/chat-2.jpg" alt="Chat screenshot" />
           </div>
           <div class="carousel-caption">
             <div class="quote">"I bought the stepper a long time ago, I only used it for a month. For some reason, I didn't like it — it was too difficult, my knees ache. I want to give it a 2nd chance and learn to walk on it correctly."</div>
-            <div class="meta"><strong>Anonymous</strong> · Weight 53kg · Wants to learn correctly</div>
+            <div class="meta">Weight 53kg · Wants to learn correctly</div>
             <div class="stats-row">
               <span>⚖️ Weight: <span class="num">53 kg</span></span>
               <span>📏 Waist: <span class="num">70 cm</span></span>
               <span>📏 Hips: <span class="num">94 cm</span></span>
-              <span>🦵 Thigh: <span class="num">51 cm</span></span>
             </div>
           </div>
         </div>
 
-        <!-- SLIDE 3 — Anastasia -->
+        <!-- SLIDE 3 -->
         <div class="carousel-slide">
           <div class="carousel-image">
-            <img src="imgs/chat-3.jpg" alt="Chat — Anastasia" />
+            <img src="imgs/chat-3.jpg" alt="Chat screenshot" />
           </div>
           <div class="carousel-caption">
             <div class="quote">"Good morning! It seems nothing hurts. I work out in intervals, but I can't make it a habit."</div>
-            <div class="meta"><strong>Anastasia</strong> · No pain · Struggles with consistency</div>
+            <div class="meta">No pain · Struggles with consistency</div>
             <div class="stats-row">
-              <span>⏰ Intervals, but no routine</span>
+              <span>⏰ Intervals, no routine</span>
               <span>💪 No pain reported</span>
             </div>
           </div>
         </div>
 
-        <!-- SLIDE 4 — Olesya -->
+        <!-- SLIDE 4 -->
         <div class="carousel-slide">
           <div class="carousel-image">
-            <img src="imgs/chat-4.jpg" alt="Chat — Olesya" />
+            <img src="imgs/chat-4.jpg" alt="Chat screenshot" />
           </div>
           <div class="carousel-caption">
             <div class="quote">"Looking at the photos is just awful! I need to do something about my body urgently! Hope I can stick with it and get into the groove 😅"</div>
-            <div class="meta"><strong>Olesya</strong> · Height 170cm · Weight 70kg</div>
+            <div class="meta">Height 170cm · Weight 70kg</div>
             <div class="stats-row">
               <span>⚖️ Weight: <span class="num">70 kg</span></span>
               <span>📏 Height: <span class="num">170 cm</span></span>
@@ -656,14 +671,14 @@
           </div>
         </div>
 
-        <!-- SLIDE 5 — Lilia -->
+        <!-- SLIDE 5 -->
         <div class="carousel-slide">
           <div class="carousel-image">
-            <img src="imgs/chat-5.jpg" alt="Chat — Lilia" />
+            <img src="imgs/chat-5.jpg" alt="Chat screenshot" />
           </div>
           <div class="carousel-caption">
             <div class="quote">"With the stepper, I'm on formal terms, never exercised before, just purchased. After walking a little, I realized the front surface of the thigh gets fatigued."</div>
-            <div class="meta"><strong>Lilia</strong> · Height 165cm · Weight 72kg · Complete beginner</div>
+            <div class="meta">Height 165cm · Weight 72kg · Complete beginner</div>
             <div class="stats-row">
               <span>⚖️ Weight: <span class="num">72 kg</span></span>
               <span>📏 Height: <span class="num">165 cm</span></span>
@@ -673,31 +688,30 @@
           </div>
         </div>
 
-        <!-- SLIDE 6 — Weight 93.3 -->
+        <!-- SLIDE 6 -->
         <div class="carousel-slide">
           <div class="carousel-image">
-            <img src="imgs/chat-6.jpg" alt="Chat — Weight 93.3" />
+            <img src="imgs/chat-6.jpg" alt="Chat screenshot" />
           </div>
           <div class="carousel-caption">
             <div class="quote">"Used the stepper at most 2-3 times and it just wasn't sticking. After walking for a long time on the stepper, my knees start to hurt and my calves tighten up."</div>
-            <div class="meta"><strong>Anonymous</strong> · Weight 93.3kg · Knee pain · Calves tightening</div>
+            <div class="meta">Weight 93.3kg · Knee pain · Calves tightening</div>
             <div class="stats-row">
               <span>⚖️ Weight: <span class="num">93.3 kg</span></span>
               <span>📏 Waist: <span class="num">91 cm</span></span>
               <span>📏 Hips: <span class="num">122 cm</span></span>
-              <span>🦵 Thigh: <span class="num">62 cm</span></span>
             </div>
           </div>
         </div>
 
-        <!-- SLIDE 7 — Alexandra -->
+        <!-- SLIDE 7 -->
         <div class="carousel-slide">
           <div class="carousel-image">
-            <img src="imgs/chat-7.jpg" alt="Chat — Alexandra" />
+            <img src="imgs/chat-7.jpg" alt="Chat screenshot" />
           </div>
           <div class="carousel-caption">
             <div class="quote">"Hello. I'm a beginner with stepper workouts. When walking, my thighs get tired first. Overall, nothing else bothers me while walking."</div>
-            <div class="meta"><strong>Alexandra</strong> · Beginner · Thigh fatigue</div>
+            <div class="meta">Complete beginner · Thigh fatigue</div>
             <div class="stats-row">
               <span>🆕 Complete beginner</span>
               <span>🦵 Thighs tire first</span>
@@ -706,31 +720,30 @@
           </div>
         </div>
 
-        <!-- SLIDE 8 — Left knee pain -->
+        <!-- SLIDE 8 -->
         <div class="carousel-slide">
           <div class="carousel-image">
-            <img src="imgs/chat-8.jpg" alt="Chat — Left knee pain" />
+            <img src="imgs/chat-8.jpg" alt="Chat screenshot" />
           </div>
           <div class="carousel-caption">
             <div class="quote">"Hello everyone! I'm a beginner on the stepper. While walking I noticed that my left knee sometimes hurts, and in general, it seems only my right leg is working — it gets more tense and tires faster."</div>
-            <div class="meta"><strong>Anonymous</strong> · Weight 59kg · Left knee pain · Right leg dominance</div>
+            <div class="meta">Weight 59kg · Left knee pain · Right leg dominance</div>
             <div class="stats-row">
               <span>⚖️ Weight: <span class="num">59 kg</span></span>
               <span>📏 Waist: <span class="num">83 cm</span></span>
               <span>📏 Hips: <span class="num">100 cm</span></span>
-              <span>🦵 Right leg works harder</span>
             </div>
           </div>
         </div>
 
-        <!-- SLIDE 9 — Extra / General -->
+        <!-- SLIDE 9 -->
         <div class="carousel-slide">
           <div class="carousel-image">
-            <img src="imgs/chat-9.jpg" alt="Chat — Extra" />
+            <img src="imgs/chat-9.jpg" alt="Chat screenshot" />
           </div>
           <div class="carousel-caption">
             <div class="quote">"63 members. 17 online. Real conversations. Real struggles. Real progress."</div>
-            <div class="meta"><strong>The Marathon Chat</strong> · 63 members · Live community</div>
+            <div class="meta">The Marathon Chat · Live community</div>
             <div class="stats-row">
               <span>👥 63 members</span>
               <span>🟢 17 online</span>
@@ -840,7 +853,7 @@
           <li>Nutrition reference guide</li>
           <li>1 month access to all recordings</li>
         </ul>
-        <button class="plan-btn" onclick="openModal()">Join Waitlist</button>
+        <button class="plan-btn" onclick="openModal()">Get Free Guide</button>
       </div>
       <div class="plan dark">
         <span class="plan-tag">Most Chosen</span>
@@ -854,7 +867,7 @@
           <li>Email access for follow-up questions</li>
           <li>Priority placement in future cohorts</li>
         </ul>
-        <button class="plan-btn" onclick="openModal()">Join Waitlist</button>
+        <button class="plan-btn" onclick="openModal()">Get Free Guide</button>
       </div>
     </div>
   </div>
@@ -893,7 +906,7 @@
         </div>
         <div class="faq-item">
           <button class="faq-q" onclick="toggleFaq(this)">When does enrollment open?</button>
-          <div class="faq-a">Cohorts open seasonally with limited capacity. The waitlist receives access before it's announced publicly.</div>
+          <div class="faq-a">The next cohort opens July 20. The waitlist receives access before it's announced publicly.</div>
         </div>
         <div class="faq-item">
           <button class="faq-q" onclick="toggleFaq(this)">Is this medical advice?</button>
@@ -908,10 +921,10 @@
 <section class="final">
   <div class="container">
     <div class="final-inner">
-      <span class="label">Next Cohort — LAUNCH_DATE</span>
+      <span class="label">Next Cohort — July 20</span>
       <h2>Stop fighting your body. Start working with it.</h2>
-      <p>Enrollment opens LAUNCH_DATE. The waitlist gets access first — no commitment, no spam.</p>
-      <a href="#" class="btn-primary" onclick="openModal(); return false;">Join the Waitlist</a>
+      <p>Enrollment opens July 20. The waitlist gets access first — no commitment, no spam.</p>
+      <a href="#" class="btn-primary" onclick="openModal(); return false;">Get the Free Guide</a>
     </div>
   </div>
 </section>
@@ -929,24 +942,23 @@
   </div>
 </footer>
 
-<!-- MODAL -->
+<!-- MODAL — FREE GUIDE POPUP -->
 <div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this) closeModal()">
   <div class="modal">
     <button class="modal-close" onclick="closeModal()" aria-label="Close">×</button>
     <div id="modalContent">
-      <p class="modal-label">Early Access &middot; Opens LAUNCH_DATE</p>
-      <h3 class="modal-title">Be the first to know when enrollment opens.</h3>
-      <p class="modal-body">Anastasia's next cohort begins LAUNCH_DATE. Join the waitlist now and you'll get access before it's announced anywhere else.</p>
+      <span class="modal-badge">🎁 Free Download</span>
+      <h3 class="modal-title">The Complete Stepper Guide</h3>
+      <p class="modal-body">Get <strong>instant access</strong> to the full guide — how to set up your stepper, correct your form, and start seeing results in just 5 days. Plus, we'll notify you when the next cohort opens on <strong>July 20</strong>.</p>
       <form class="modal-form" id="waitlistForm" action="https://YOURACCOUNT.usXX.list-manage.com/subscribe/post?u=YOUR_U&amp;id=YOUR_ID&amp;f_id=YOUR_FID" method="post" target="mc_iframe" onsubmit="handleSubmit(event)">
         <input type="text" name="FNAME" placeholder="First name" required autocomplete="given-name" />
         <input type="email" name="EMAIL" placeholder="Email address" required autocomplete="email" />
         <div style="position:absolute; left:-5000px;" aria-hidden="true">
           <input type="text" name="b_YOUR_U_YOUR_ID" tabindex="-1" value="" />
         </div>
-        <button type="submit">Notify Me</button>
+        <button type="submit">Send Me the Free Guide →</button>
       </form>
-      <p class="modal-note">One email. When enrollment opens. Nothing else.</p>
-      <p class="modal-note" style="margin-top:14px">Not ready yet? <a href="guide.html" style="color:var(--black); border-bottom:1px solid var(--black);">Get the free Stepper Guide</a> instead.</p>
+      <p class="modal-note">No spam. One email when the guide is ready, and one when enrollment opens.</p>
     </div>
   </div>
   <iframe name="mc_iframe" style="display:none" title="mailchimp-submit"></iframe>
@@ -1033,13 +1045,15 @@ function closeModal() {
 }
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
+// Show modal on load (with sessionStorage check)
 let modalShown = false;
 setTimeout(() => {
   if (!modalShown && !sessionStorage.getItem('modalSeen')) {
-    openModal(); modalShown = true;
+    openModal();
+    modalShown = true;
     sessionStorage.setItem('modalSeen', '1');
   }
-}, 8000);
+}, 3000);
 
 function handleSubmit(e) {
   const f = e.target;
@@ -1050,10 +1064,14 @@ function handleSubmit(e) {
   localStorage.setItem('waitlist', JSON.stringify(leads));
   setTimeout(() => {
     document.getElementById('modalContent').innerHTML =
-      '<div class="modal-success"><p class="modal-label">Confirmed</p>' +
-      '<h3 class="modal-title">You\'re on the list, ' + name + '.</h3>' +
-      '<p>We\'ll email <strong>' + email + '</strong> when the next cohort opens.</p></div>';
-  }, 300);
+      '<div class="modal-success">' +
+      '<span class="modal-badge">✅ Check Your Email</span>' +
+      '<h3 class="modal-title">You\'re all set, ' + name + '.</h3>' +
+      '<p>We just sent the <strong>Complete Stepper Guide</strong> to <strong>' + email + '</strong>. Check your inbox (and spam, just in case).</p>' +
+      '<p style="margin-top:12px;font-size:13px;color:var(--grey-2);">We\'ll also notify you when the next cohort opens on <strong>July 20</strong>.</p>' +
+      '<a href="#" class="btn-primary" style="display:inline-block;margin-top:20px;" onclick="closeModal();return false;">Continue to Site →</a>' +
+      '</div>';
+  }, 400);
 }
 </script>
 
