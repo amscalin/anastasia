@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>The Stepper Guide — The Anastasia Method</title>
+<title>The Complete Stepper Guide — The Anastasia Method</title>
+<meta name="description" content="A comprehensive guide to stepper training — how to choose a stepper, master proper technique, lose weight, and protect your joints." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -12,7 +13,6 @@
   html { -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
   img { display: block; max-width: 100%; }
   a { color: inherit; text-decoration: none; }
-  button { font: inherit; cursor: pointer; border: none; background: none; }
 
   :root {
     --white:   #FFFFFF;
@@ -21,32 +21,34 @@
     --grey-2:  #999999;
     --grey-3:  #DDDDDD;
     --grey-4:  #F2F2F2;
-
-    --t-display: 52px;
-    --t-h1:      38px;
-    --t-h2:      26px;
+    --t-h1:      42px;
+    --t-h2:      28px;
+    --t-h3:      22px;
     --t-body-l:  17px;
     --t-body:    15px;
     --t-small:   13px;
     --t-label:   11px;
-
     --s-2: 16px; --s-3: 24px; --s-4: 32px;
     --s-5: 48px; --s-6: 64px; --s-7: 96px;
     --gutter: 32px;
+    --max: 800px;
   }
   @media (max-width: 768px) {
     :root {
-      --t-display: 32px; --t-h1: 26px; --t-h2: 20px; --gutter: 20px;
+      --t-h1: 30px; --t-h2: 22px; --t-h3: 18px;
+      --gutter: 20px;
     }
   }
 
   body {
     font-family: 'Inter', -apple-system, sans-serif;
-    font-size: var(--t-body); line-height: 1.65;
-    color: var(--black); background: var(--white);
+    font-size: var(--t-body);
+    line-height: 1.7;
+    color: var(--black);
+    background: var(--white);
   }
 
-  .container { max-width: 700px; margin: 0 auto; padding: 0 var(--gutter); }
+  .container { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
   .container-wide { max-width: 1200px; margin: 0 auto; padding: 0 var(--gutter); }
 
   /* ── NAV ── */
@@ -79,13 +81,11 @@
   .nav-cta:hover { opacity: 0.8; }
   @media (max-width: 600px) { .nav-link.hide-m { display: none; } }
 
-  /* ── HEADER ── */
-  .article-head {
-    padding: var(--s-7) 0 var(--s-5); text-align: center;
-  }
+  /* ── HERO ── */
+  .article-head { padding: var(--s-6) 0 var(--s-4); text-align: center; }
   .article-meta-top {
     display: flex; justify-content: center; gap: var(--s-3); flex-wrap: wrap;
-    margin-bottom: var(--s-4);
+    margin-bottom: var(--s-3);
   }
   .article-meta-top span {
     font-size: var(--t-label); font-weight: 500;
@@ -93,28 +93,29 @@
   }
   .article-title {
     font-family: 'Fraunces', serif; font-weight: 300;
-    font-size: var(--t-display); line-height: 1.08;
+    font-size: var(--t-h1); line-height: 1.08;
     letter-spacing: -0.025em; margin-bottom: var(--s-3);
   }
   .article-deck {
     font-size: var(--t-body-l); line-height: 1.7;
-    color: var(--grey-1); max-width: 560px;
-    margin: 0 auto var(--s-3);
+    color: var(--grey-1); max-width: 600px;
+    margin: 0 auto var(--s-2);
   }
   .article-byline {
     font-size: 13px; color: var(--grey-2);
   }
   .article-byline strong { color: var(--black); font-weight: 500; }
 
-  /* ── HERO IMAGE ── */
   .article-hero-image {
-    max-width: 1200px; margin: 0 auto var(--s-6);
+    max-width: 900px; margin: 0 auto var(--s-5);
     padding: 0 var(--gutter);
+    border-radius: 12px;
+    overflow: hidden;
   }
   .article-hero-image img { width: 100%; height: auto; }
 
   /* ── ARTICLE BODY ── */
-  .article-body { padding-bottom: var(--s-6); }
+  .article-body { padding-bottom: var(--s-5); }
   .article-body p {
     font-size: var(--t-body-l); line-height: 1.8; color: #2A2A2A;
     margin-bottom: var(--s-3);
@@ -122,102 +123,183 @@
   .article-body .lead {
     font-family: 'Fraunces', serif; font-weight: 300;
     font-size: 21px; line-height: 1.55; color: var(--black);
-    margin-bottom: var(--s-5);
+    margin-bottom: var(--s-4);
   }
 
   .article-body h2 {
     font-family: 'Fraunces', serif; font-weight: 400;
     font-size: var(--t-h2); line-height: 1.2;
-    margin: var(--s-6) 0 var(--s-3);
+    margin: var(--s-5) 0 var(--s-2);
   }
   .article-body h2 .num {
     display: block;
     font-family: 'Inter', sans-serif; font-weight: 500;
     font-size: var(--t-label); letter-spacing: 0.16em;
     text-transform: uppercase; color: var(--grey-2);
-    margin-bottom: 10px;
+    margin-bottom: 6px;
+  }
+  .article-body h3 {
+    font-family: 'Fraunces', serif; font-weight: 400;
+    font-size: var(--t-h3); line-height: 1.25;
+    margin: var(--s-4) 0 var(--s-2);
   }
 
-  /* Pull quote */
+  /* ── IMAGE BLOCK ── */
+  .guide-img {
+    margin: var(--s-4) 0;
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--grey-4);
+  }
+  .guide-img img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .guide-img .caption {
+    padding: 12px 20px;
+    font-size: 13px;
+    color: var(--grey-2);
+    text-align: center;
+    background: var(--white);
+    border-top: 1px solid var(--grey-3);
+  }
+  .guide-img-center {
+    margin: var(--s-4) auto;
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--grey-4);
+    max-width: 600px;
+  }
+  .guide-img-center img { width: 100%; height: auto; display: block; }
+
+  /* ── PULL QUOTE ── */
   .pull-quote {
-    margin: var(--s-5) 0; padding: var(--s-4) 0;
+    margin: var(--s-4) 0; padding: var(--s-4) var(--s-3);
     border-top: 1px solid var(--grey-3); border-bottom: 1px solid var(--grey-3);
     text-align: center;
   }
   .pull-quote blockquote {
     font-family: 'Fraunces', serif; font-weight: 300; font-style: italic;
-    font-size: 24px; line-height: 1.35; max-width: 540px; margin: 0 auto;
+    font-size: 22px; line-height: 1.4; max-width: 560px; margin: 0 auto;
+  }
+  .pull-quote .attribution {
+    font-size: 13px;
+    color: var(--grey-2);
+    margin-top: 8px;
+    font-style: normal;
   }
 
-  /* Metric strip */
-  .metric-strip {
-    border: 1px solid var(--grey-3); padding: var(--s-4); margin: var(--s-4) 0;
-  }
-  .metric-strip h4 {
-    font-size: var(--t-label); font-weight: 500;
-    letter-spacing: 0.16em; text-transform: uppercase;
-    color: var(--grey-2); margin-bottom: var(--s-3);
-  }
-  .metric-row {
-    display: grid; grid-template-columns: 130px 1fr;
-    gap: var(--s-3); padding: 12px 0; border-bottom: 1px solid var(--grey-3);
-  }
-  .metric-row:last-child { border-bottom: 0; }
-  .metric-row .k {
-    font-weight: 500; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase;
-  }
-  .metric-row .v { font-size: 14px; color: var(--grey-1); line-height: 1.55; }
-  @media (max-width: 600px) { .metric-row { grid-template-columns: 1fr; gap: 4px; } }
-
-  /* Callout */
+  /* ── CALLOUT ── */
   .callout {
     background: var(--grey-4); padding: var(--s-4); margin: var(--s-4) 0;
-    border-left: 2px solid var(--black);
+    border-left: 3px solid var(--black);
+    border-radius: 0 8px 8px 0;
   }
   .callout .tag {
     font-size: var(--t-label); font-weight: 500;
     letter-spacing: 0.16em; text-transform: uppercase;
-    color: var(--grey-2); margin-bottom: 8px;
+    color: var(--grey-2); margin-bottom: 6px;
   }
   .callout p { font-size: 15px !important; line-height: 1.7 !important; margin: 0 !important; }
 
-  /* Rule list */
-  .rule-list {
-    list-style: none; margin: var(--s-3) 0 var(--s-4);
+  /* ── CHECKLIST ── */
+  .checklist {
+    list-style: none;
+    margin: var(--s-3) 0 var(--s-4);
     border-top: 1px solid var(--grey-3);
   }
-  .rule-list li {
-    border-bottom: 1px solid var(--grey-3); padding: var(--s-3) 0;
-    display: grid; grid-template-columns: 36px 1fr; gap: 12px;
-    font-size: var(--t-body); line-height: 1.65;
+  .checklist li {
+    border-bottom: 1px solid var(--grey-3);
+    padding: var(--s-2) 0;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    font-size: var(--t-body-l);
+    line-height: 1.6;
+    color: var(--grey-1);
   }
+  .checklist li::before {
+    content: '✓';
+    font-size: 16px;
+    color: var(--black);
+    font-weight: 600;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* ── ICON GRID ── */
+  .icon-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: var(--s-3);
+    margin: var(--s-3) 0 var(--s-4);
+  }
+  .icon-item {
+    text-align: center;
+    padding: var(--s-2);
+    border: 1px solid var(--grey-3);
+    border-radius: 8px;
+    background: var(--white);
+  }
+  .icon-item img {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 8px;
+    display: block;
+  }
+  .icon-item span {
+    font-size: 13px;
+    color: var(--grey-1);
+    line-height: 1.4;
+  }
+
+  /* ── RULES LIST ── */
+  .rule-list {
+    list-style: none; margin: var(--s-3) 0 var(--s-4);
+  }
+  .rule-list li {
+    padding: var(--s-2) 0;
+    display: grid; grid-template-columns: 32px 1fr;
+    gap: 12px;
+    font-size: var(--t-body-l); line-height: 1.65;
+    border-bottom: 1px solid var(--grey-3);
+  }
+  .rule-list li:last-child { border-bottom: 0; }
   .rule-list li .n {
     font-family: 'Fraunces', serif; font-weight: 300;
-    font-size: 20px; color: var(--grey-2); line-height: 1.1;
+    font-size: 18px; color: var(--grey-2); line-height: 1.3;
   }
   .rule-list li .t { color: var(--grey-1); }
   .rule-list li .t strong { color: var(--black); font-weight: 500; }
 
-  /* Levels */
-  .levels { display: flex; flex-direction: column; gap: var(--s-2); margin: var(--s-4) 0; }
-  .level { border: 1px solid var(--grey-3); padding: var(--s-4); }
+  /* ── LEVELS ── */
+  .levels { display: flex; flex-direction: column; gap: var(--s-2); margin: var(--s-3) 0 var(--s-4); }
+  .level {
+    border: 1px solid var(--grey-3);
+    border-radius: 8px;
+    padding: var(--s-3) var(--s-4);
+  }
   .level-head {
     display: flex; justify-content: space-between; align-items: baseline;
     margin-bottom: var(--s-2); padding-bottom: var(--s-2);
     border-bottom: 1px solid var(--grey-3);
+    flex-wrap: wrap;
+    gap: 8px;
   }
   .level-name { font-family: 'Fraunces', serif; font-weight: 400; font-size: 20px; }
   .level-tag {
     font-size: var(--t-label); font-weight: 500;
     letter-spacing: 0.14em; text-transform: uppercase; color: var(--grey-2);
   }
-  .level p { font-size: 15px !important; line-height: 1.65 !important; margin-bottom: 6px !important; }
+  .level p { font-size: 15px !important; line-height: 1.65 !important; margin-bottom: 4px !important; }
   .level p:last-child { margin-bottom: 0 !important; }
 
-  /* Author note */
+  /* ── AUTHOR NOTE ── */
   .author-note {
     background: var(--black); color: var(--white);
-    padding: var(--s-5); margin: var(--s-6) 0 0; text-align: center;
+    padding: var(--s-5); margin: var(--s-5) 0 0; text-align: center;
+    border-radius: 12px;
   }
   .author-note .tag {
     font-size: var(--t-label); letter-spacing: 0.16em;
@@ -226,14 +308,14 @@
   }
   .author-note blockquote {
     font-family: 'Fraunces', serif; font-weight: 300; font-style: italic;
-    font-size: 24px; line-height: 1.35; max-width: 500px; margin: 0 auto;
+    font-size: 22px; line-height: 1.4; max-width: 500px; margin: 0 auto;
   }
-  @media (max-width: 600px) { .author-note blockquote { font-size: 19px; } }
+  @media (max-width: 600px) { .author-note blockquote { font-size: 18px; } }
 
   /* ── CTA ── */
   .article-cta {
-    text-align: center; padding: var(--s-7) 0;
-    border-top: 1px solid var(--grey-3); margin-top: var(--s-7);
+    text-align: center; padding: var(--s-6) 0;
+    border-top: 1px solid var(--grey-3); margin-top: var(--s-5);
   }
   .article-cta .tag {
     font-size: var(--t-label); letter-spacing: 0.16em;
@@ -242,29 +324,23 @@
   }
   .article-cta h2 {
     font-family: 'Fraunces', serif; font-weight: 300;
-    font-size: var(--t-h1); line-height: 1.12;
+    font-size: var(--t-h2); line-height: 1.2;
     max-width: 520px; margin: 0 auto var(--s-3);
   }
   .article-cta p {
     font-size: var(--t-body-l); color: var(--grey-1);
-    max-width: 440px; margin: 0 auto var(--s-4); line-height: 1.7;
+    max-width: 440px; margin: 0 auto var(--s-3); line-height: 1.7;
   }
-  .cta-buttons { display: inline-flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
   .btn-primary {
     display: inline-block; background: var(--black); color: var(--white);
-    padding: 15px 28px; font-size: var(--t-small); font-weight: 500;
+    padding: 15px 32px; font-size: var(--t-small); font-weight: 500;
     letter-spacing: 0.04em; transition: opacity 0.2s;
+    border-radius: 4px;
   }
   .btn-primary:hover { opacity: 0.8; }
-  .btn-link {
-    display: inline-block; color: var(--black);
-    font-size: var(--t-small); font-weight: 500;
-    padding: 15px 0; border-bottom: 1px solid var(--black);
-  }
-  .btn-link:hover { color: var(--grey-1); border-color: var(--grey-1); }
 
   /* ── FOOTER ── */
-  footer { border-top: 1px solid var(--grey-3); padding: var(--s-5) 0; }
+  footer { border-top: 1px solid var(--grey-3); padding: var(--s-4) 0; }
   .footer-inner {
     display: flex; justify-content: space-between; align-items: center;
     flex-wrap: wrap; gap: var(--s-3);
@@ -275,7 +351,7 @@
 </head>
 <body>
 
-<div class="topbar">Next cohort opens soon · Join the waitlist for early access</div>
+<div class="topbar">Next cohort opens July 20 · Join the waitlist for early access</div>
 
 <nav>
   <div class="nav-inner">
@@ -288,121 +364,760 @@
   </div>
 </nav>
 
+<!-- HEADER -->
 <header class="article-head container">
   <div class="article-meta-top">
     <span>Free Guide</span>
     <span>·</span>
-    <span>The Method</span>
+    <span>Full Program</span>
     <span>·</span>
-    <span>8 Min Read</span>
+    <span>25 Min Read</span>
   </div>
-  <h1 class="article-title">The Complete Stepper Guide</h1>
-  <p class="article-deck">After a year of daily practice and two private cohorts, everything Anastasia knows about training on a stepper — the technique, the progression, and the principles that deliver results.</p>
-  <p class="article-byline">By <strong>Anastasia</strong> · Updated March 2026</p>
+  <h1 class="article-title">The Complete Stepper Training Guide</h1>
+  <p class="article-deck">How to train at home to lose weight, tone your body, and protect your knees — everything I've learned after a year of daily practice and two private cohorts.</p>
+  <p class="article-byline">By <strong>Anastasia</strong> · Updated July 2026</p>
 </header>
 
+<!-- HERO IMAGE -->
 <div class="article-hero-image">
-  <img src="imgs/anastasia-stepper.jpg" alt="Anastasia demonstrating stepper technique" />
+  <img src="imgs/anastasia-stepper.jpg" alt="Anastasia training on a stepper" />
 </div>
 
+<!-- BODY -->
 <article class="article-body container">
 
-  <p class="lead">If you are here, you want more from your stepper. Most people step on, hold the handles, and grind away for twenty minutes wondering why nothing changes. This guide is the version of stepper training that most trainers cannot teach — and that popular fitness content does not show.</p>
+  <p class="lead">My name is Nastya. I've been training on a stepper for more than a year now. I've lost 10 kg, toned my body, strengthened my back, legs, and glutes, and I've learned one important thing:</p>
 
-  <h2><span class="num">01 / Display</span>What the screen is actually telling you</h2>
-  <p>Before you step on, take a minute to understand what your stepper is reporting. Most home steppers show four to six metrics. Here is what each one means.</p>
+  <p><strong>The stepper is not just a machine you mindlessly walk on.</strong></p>
 
-  <div class="metric-strip">
-    <h4>Reading Your Display</h4>
-    <div class="metric-row"><div class="k">Strides / Min</div><div class="v">Your pace. Ignore this early on. As you progress, use it to structure sessions into warm-up, main set, and cool-down.</div></div>
-    <div class="metric-row"><div class="k">Count</div><div class="v">Total steps this session. Reset before each workout or it carries over.</div></div>
-    <div class="metric-row"><div class="k">Time</div><div class="v">Session duration. For meaningful results, aim for at least twenty minutes of continuous movement.</div></div>
-    <div class="metric-row"><div class="k">Calories</div><div class="v">An approximation. Use a smartwatch or heart-rate monitor for accuracy.</div></div>
-  </div>
+  <p>If you train correctly on it, the stepper can become a full-body home workout. Not just to add extra steps. Not just to sweat. Not just to check off "I worked out today" on your list. But to actually train: engaging your legs, glutes, back, arms, core, pelvis, breathing, and coordination — and gradually transforming your body.</p>
 
-  <div class="callout">
-    <div class="tag">Note</div>
-    <p>The large central button — usually red — controls power, reset, and metric cycling all in one. Get familiar with it before your first session.</p>
-  </div>
+  <p>I am a Pilates trainer. I study biomechanics and work with women who want to lose weight, tone up, and regain a sense of lightness without strict diets and punishing workouts.</p>
 
-  <h2><span class="num">02 / Form</span>The technique most people get wrong</h2>
-  <p>The way most people use a stepper recruits the quadriceps heavily while barely engaging the glutes or hamstrings. The result is bulkier thighs, no lift in the back of the body, and growing risk of knee or lower-back pain. Correct technique is not complicated — but it is precise.</p>
+  <p>I wrote this guide for those who've already bought a stepper or are thinking about buying one, but don't understand:</p>
 
   <ul class="rule-list">
-    <li><span class="n">i</span><span class="t"><strong>Full foot on the pedal.</strong> Your entire sole should be in contact — not just the ball of your foot.</span></li>
-    <li><span class="n">ii</span><span class="t"><strong>Knees track your second and third toe.</strong> Not collapsing inward, not flaring out. A mirror in front of you is the simplest correction tool.</span></li>
-    <li><span class="n">iii</span><span class="t"><strong>Crown of the head lifts upward.</strong> Long spine, neutral neck, no chin dropping.</span></li>
-    <li><span class="n">iv</span><span class="t"><strong>Hinge from the hip, not the lower back.</strong> A slight forward lean is correct — but it must come from your hip joint, not from rounding your lumbar spine.</span></li>
-    <li><span class="n">v</span><span class="t"><strong>Soft knees.</strong> Never fully lock out at the bottom of a step. A slight bend protects your joints.</span></li>
-    <li><span class="n">vi</span><span class="t"><strong>Hands off the handles.</strong> If you lean your weight into the handrails, you offload thirty to forty percent of the work. Use them for balance only.</span></li>
+    <li><span class="n">•</span><span class="t">Which stepper to choose</span></li>
+    <li><span class="n">•</span><span class="t">How to start if you're a beginner</span></li>
+    <li><span class="n">•</span><span class="t">Why your knees or calves hurt</span></li>
+    <li><span class="n">•</span><span class="t">Can you train every day</span></li>
+    <li><span class="n">•</span><span class="t">How to lose weight on a stepper</span></li>
+    <li><span class="n">•</span><span class="t">Why just walking isn't enough</span></li>
+    <li><span class="n">•</span><span class="t">How to turn a stepper into a proper full-body workout</span></li>
+  </ul>
+
+  <!-- ============================================ -->
+  <!-- SECTION 1 — WHY I CHOSE THE STEPPER -->
+  <!-- ============================================ -->
+
+  <h2><span class="num">01</span>Why I Chose the Stepper</h2>
+
+  <p>I'm a mom. I work, I study, I run a blog, take care of my house, manage my life — and I don't have endless time for sports.</p>
+
+  <p>I don't like the format where you have to get ready, drive to the gym, work out, drive back, change clothes, and squeeze it all into your day without dying from exhaustion.</p>
+
+  <p>I needed a format I could do at home. Quickly. Simply. Without travel. Without extra resistance. And with results.</p>
+
+  <p>That's how the stepper came into my life.</p>
+
+  <p>But I quickly realized: if you just walk on it like you're climbing a mini-staircase, the results will be limited.</p>
+
+  <p>You can sweat. You can get tired. You can "add extra steps." But your body doesn't always transform the way you want.</p>
+
+  <p>I wanted more. In the 30–40 minutes I have, I wanted to get the maximum from my workout.</p>
+
+  <p>That's why I started combining the stepper with what I know from Pilates, biomechanics, and training principles.</p>
+
+  <p><strong>This is how the stepper transformed from a "leg machine" into a full-body training tool for me.</strong></p>
+
+  <!-- ============================================ -->
+  <!-- SECTION 2 — HOW I LOST 10 KG -->
+  <!-- ============================================ -->
+
+  <h2><span class="num">02</span>How I Lost 10 kg</h2>
+
+  <p>I can't say my 10 kg came off in a specific timeframe like "in 2 months" or "in 100 days". For me, it happened gradually over time. And that was important to me.</p>
+
+  <p>I have experience with disordered eating, so rapid weight fluctuations, strict diets, heavy restrictions, and quick weight-loss schemes are contraindicated for me.</p>
+
+  <p>I barely changed my diet dramatically. I didn't have the story: "I went on a strict diet, cut out everything delicious, started training every day, and lost weight quickly."</p>
+
+  <p>No. My results came from something different:</p>
+
+  <ul class="rule-list">
+    <li><span class="n">•</span><span class="t">I found a home workout format</span></li>
+    <li><span class="n">•</span><span class="t">I stopped depending on going to the gym</span></li>
+    <li><span class="n">•</span><span class="t">I started training more regularly</span></li>
+    <li><span class="n">•</span><span class="t">I figured out how to use the stepper not just for walking, but for proper training</span></li>
+    <li><span class="n">•</span><span class="t">I started engaging my whole body</span></li>
+    <li><span class="n">•</span><span class="t">I added strength elements</span></li>
+    <li><span class="n">•</span><span class="t">I got better at feeling my back, legs, glutes, and core</span></li>
+    <li><span class="n">•</span><span class="t">The stress around the idea of "I have to work out" disappeared</span></li>
+  </ul>
+
+  <p>For me, this was a huge relief. Before, workouts were often stressful: I had to go somewhere, get ready, find time, adjust my day, find energy. Everything felt heavy.</p>
+
+  <p>With the stepper, everything became simpler. I can train at home. Quickly. Without driving. Without needing the perfect day. And it became a system that fits my real life: with a child, work, studies, household chores, and regular tiredness.</p>
+
+  <p><strong>That's why the stepper is not just a machine for me. It's a tool that helped me regain movement, lightness, a beautiful body, and the feeling that I can take care of myself without harming myself.</strong></p>
+
+  <!-- ============================================ -->
+  <!-- SECTION 3 — MAIN MISTAKE -->
+  <!-- ============================================ -->
+
+  <h2><span class="num">03</span>The Main Mistake: Thinking the Stepper is Only for Legs</h2>
+
+  <p>Many people see the stepper as a machine "for legs only". You step on, walk, your thighs burn, you sweat, you step off.</p>
+
+  <p>But if you only work your legs, you often get an imbalance:</p>
+
+  <ul class="rule-list">
+    <li><span class="n">•</span><span class="t">The front of the thigh tires</span></li>
+    <li><span class="n">•</span><span class="t">Your calves burn</span></li>
+    <li><span class="n">•</span><span class="t">Your knees get fatigued</span></li>
+    <li><span class="n">•</span><span class="t">Your lower back might tense up</span></li>
+    <li><span class="n">•</span><span class="t">Your glutes barely work</span></li>
+    <li><span class="n">•</span><span class="t">Your upper body doesn't engage at all</span></li>
+    <li><span class="n">•</span><span class="t">The workout gets boring quickly</span></li>
+  </ul>
+
+  <p>Then people conclude: "The stepper doesn't work for me." "It's boring." "My knees hurt." "You can't really lose weight on it."</p>
+
+  <p><strong>But the problem is often not the stepper. The problem is how you're using it.</strong></p>
+
+  <p>You can simply walk on a stepper. Or you can train. And these are two completely different formats.</p>
+
+  <!-- IMAGE: Stepper display with labels -->
+  <div class="guide-img">
+    <img src="imgs/stepper-display.jpg" alt="Stepper display with labeled metrics" />
+    <div class="caption">Understanding your stepper display — what each metric actually means</div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- SECTION 4 — WALKING VS TRAINING -->
+  <!-- ============================================ -->
+
+  <h2><span class="num">04</span>Walking on a Stepper vs. Training on a Stepper — They're Different</h2>
+
+  <p>There's light walking. This is when you simply step on, calmly walk for 10–20 minutes, add some movement, get your blood flowing, add extra activity after a sitting day.</p>
+
+  <p>This is a good format. It's valid.</p>
+
+  <p>But then there's full-body training. This is where you engage:</p>
+
+  <ul class="rule-list">
+    <li><span class="n">•</span><span class="t">Your arms</span></li>
+    <li><span class="n">•</span><span class="t">Your core</span></li>
+    <li><span class="n">•</span><span class="t">Your pelvis</span></li>
+    <li><span class="n">•</span><span class="t">Your glutes</span></li>
+    <li><span class="n">•</span><span class="t">The back of your thighs</span></li>
+    <li><span class="n">•</span><span class="t">Your abs</span></li>
+    <li><span class="n">•</span><span class="t">Your back</span></li>
+    <li><span class="n">•</span><span class="t">Your chest</span></li>
+    <li><span class="n">•</span><span class="t">Your breathing</span></li>
+    <li><span class="n">•</span><span class="t">Your coordination</span></li>
+    <li><span class="n">•</span><span class="t">Strength elements</span></li>
+    <li><span class="n">•</span><span class="t">Dumbbells</span></li>
+    <li><span class="n">•</span><span class="t">Different types of walking</span></li>
+  </ul>
+
+  <p><strong>It's this format that helps you not just "add steps," but truly transform your body.</strong> Your body becomes more toned, engaged, strong, and alive.</p>
+
+  <!-- ============================================ -->
+  <!-- SECTION 5 — WHICH STEPPER TO CHOOSE -->
+  <!-- ============================================ -->
+
+  <h2><span class="num">05</span>Which Stepper to Choose for Beginners</h2>
+
+  <p>I get asked this question so often that I decided to answer it once and for all.</p>
+
+  <p>In the last year, I've had three steppers:</p>
+
+  <ul class="rule-list">
+    <li><span class="n">•</span><span class="t">The first one — a light twisting stepper</span></li>
+    <li><span class="n">•</span><span class="t">Then a straight stepper</span></li>
+    <li><span class="n">•</span><span class="t">Now — a stable twisting stepper that I train on constantly</span></li>
+  </ul>
+
+  <p><strong>Don't buy a simple stepper "for beginners" just to buy a different one later when you get better.</strong></p>
+
+  <p>It's better to choose a good stepper from the start that will work for you as a beginner and for your future training. This way you'll save money, energy, and avoid reaching the point where the machine no longer suits you in a month.</p>
+
+  <h3>5.1 High Step Height</h3>
+
+  <p>The first thing I'd look at is the height of the step. The higher the step, the better you can regulate the load and the more interesting you can make your workouts.</p>
+
+  <p>Light steppers often have a very small range of motion: you feel like you're walking, but the step is short, the load is weak, and the muscles don't engage well.</p>
+
+  <p>The height of the step directly affects how well you can load your legs, glutes, and your entire body. If the step is too small, over time it might feel too easy and uninteresting.</p>
+
+  <h3>5.2 Adjustable Resistance</h3>
+
+  <p>The second important thing is that the resistance should be adjustable. I don't recommend buying a stepper where there's no proper adjustment or only one bolt in front.</p>
+
+  <p>Why? Because steppers like that are often too stiff. For a beginner, it's hard to start: your legs aren't used to it yet, your technique isn't set, your knees and feet aren't adapted. And then you hit another problem: when you get used to this resistance, there's nowhere else to increase it.</p>
+
+  <p>You end up either walking for 2–3 hours a day to make it harder, or the stepper becomes useless. And I don't think anyone has 2–3 hours.</p>
+
+  <p><strong>It's better to choose a stepper with a clear resistance adjustment system.</strong> For example, 11 levels: you start at level 1–2, then gradually increase the difficulty. This is much more convenient and safer.</p>
+
+  <h3>5.3 Stability</h3>
+
+  <p>The stepper should be stable. Especially if you want to do different types of walking, engage your arms and core, and do coordination exercises.</p>
+
+  <p>We don't hold onto handrails on the stepper because most don't have them. So the machine itself needs to stand firmly.</p>
+
+  <p>If the stepper is flimsy, you'll tip forward or sideways, and instead of training, you'll be constantly catching your balance. This is not only uncomfortable but also messes up your technique.</p>
+
+  <h3>5.4 Pedal Length</h3>
+
+  <p>Always check the pedal length. If you have a larger shoe size, a short pedal will be uncomfortable.</p>
+
+  <p>I had a straight stepper with a short footplate, and it wasn't comfortable: my foot didn't fit the way I needed it to, and I was constantly adjusting. When your foot is in an uncomfortable position, it affects your whole technique: your knees, pelvis, balance, and how the load feels.</p>
+
+  <p><strong>So the pedal should be long enough and comfortable for your foot.</strong></p>
+
+  <h3>5.5 Cable and Mechanism Quality</h3>
+
+  <p>Another important thing is the cable. I've had girls send me videos where their stepper cable snapped.</p>
+
+  <p>Often the problem is that the mechanism has a wheel or round element the cable constantly rubs against. During training, the mechanism heats up, the cable heats up, and over time it can just snap.</p>
+
+  <p>So look at how the mechanism is built. The fewer parts the cable rubs against, the better.</p>
+
+  <h3>5.6 Twisting or Straight?</h3>
+
+  <p><strong>I recommend a twisting stepper specifically.</strong></p>
+
+  <p>You can train on a straight stepper, but a twisting one gives you more options:</p>
+
+  <ul class="rule-list">
+    <li><span class="n">•</span><span class="t">Better core engagement</span></li>
+    <li><span class="n">•</span><span class="t">More variety in walking styles</span></li>
+    <li><span class="n">•</span><span class="t">You can actively work your waist</span></li>
+    <li><span class="n">•</span><span class="t">Your workout becomes more diverse</span></li>
+    <li><span class="n">•</span><span class="t">It's easier to turn regular walking into proper training</span></li>
+  </ul>
+
+  <p><strong>If your goal is not just to "add steps" but to really tone your body, I'd choose a twisting one.</strong></p>
+
+  <h3>Quick Checklist Before Buying</h3>
+
+  <ul class="checklist">
+    <li>Is the step height good</li>
+    <li>Is there proper resistance adjustment</li>
+    <li>Is the stepper stable</li>
+    <li>Are the pedals long enough</li>
+    <li>Does it match your weight</li>
+    <li>Does it feel flimsy</li>
+    <li>Does the cable mechanism look weak</li>
+    <li>Is it a twisting one if you want more training options</li>
   </ul>
 
   <div class="callout">
-    <div class="tag">Troubleshooting</div>
-    <p>Lower-back pain usually means you are rounding through the lumbar spine. Knee pain is most often a tracking issue — check whether your knees collapse inward. Foot or ankle discomfort tends to mean the foot is not fully flat on the pedal.</p>
+    <div class="tag">Key Takeaway</div>
+    <p><strong>Don't buy the simplest stepper just because you're a beginner.</strong> For a beginner especially, it's important that the stepper is comfortable, stable, has adjustable resistance, and normal range of motion. Because if it's uncomfortable, hard, painful, or boring — you'll just abandon it after a week. But a good stepper can become a machine you'll train on for a long time, safely, and with results.</p>
   </div>
 
-  <h2><span class="num">03 / Preparation</span>Why you cannot skip the warm-up</h2>
-  <p>Stepping onto a cold stepper is one of the fastest ways to develop a chronic knee issue. Five to ten minutes of preparation — hip circles, cat-cow, bodyweight squats — makes the session safer and more productive. The full program includes specific warm-up routines built around stepper training.</p>
+  <!-- ============================================ -->
+  <!-- SECTION 6 — HOW TO START -->
+  <!-- ============================================ -->
 
-  <div class="pull-quote">
-    <blockquote>"A stepper is one of the most underused tools in any home — because the people using it have never been taught what it is actually for."</blockquote>
+  <h2><span class="num">06</span>How to Start as a Beginner</h2>
+
+  <p>If you just bought a stepper, don't immediately jump on for 40 minutes every day. Even if it seems: "What's so hard? I'm just walking."</p>
+
+  <p>The load on a stepper is specific. Your knees, feet, calves, pelvis, and muscles need time to adapt.</p>
+
+  <p><strong>Start gradually.</strong></p>
+
+  <div class="callout">
+    <div class="tag">Example of a Gentle Start</div>
+    <p><strong>Week 1:</strong> 5–10 minutes of calm walking.<br />
+    <strong>Week 2:</strong> 10–15 minutes.<br />
+    <strong>Week 3:</strong> 15–20 minutes.<br /><br />
+    After that, you can gradually increase time and add exercises.</p>
   </div>
 
-  <h2><span class="num">04 / Progression</span>Three levels, structured intentionally</h2>
-  <p>Do not pick a workout based on how hard you want to push. Pick it based on where your technique actually is.</p>
+  <p><strong>Main rule: Don't be a hero.</strong> If your body says "I've had enough for now" — it's not weakness. It's normal adaptation.</p>
 
-  <div class="levels">
-    <div class="level">
-      <div class="level-head"><div class="level-name">Foundation</div><div class="level-tag">Level One</div></div>
-      <p><strong>For whom.</strong> Anyone new, returning after a break, or rebuilding technique.</p>
-      <p><strong>Format.</strong> Twenty to thirty minutes, moderate pace. You should be able to speak in short sentences.</p>
-      <p><strong>Focus.</strong> Reprogramming movement patterns. The goal is alignment and activation, not calorie burn.</p>
-    </div>
-    <div class="level">
-      <div class="level-head"><div class="level-name">Intensity</div><div class="level-tag">Level Two</div></div>
-      <p><strong>For whom.</strong> Two to three months of consistent training, solid technique, no joint discomfort.</p>
-      <p><strong>Format.</strong> Structured pace variations — interval-style work. Calorie expenditure rises significantly here.</p>
-    </div>
-    <div class="level">
-      <div class="level-head"><div class="level-name">Sculpt</div><div class="level-tag">Level Three</div></div>
-      <p><strong>For whom.</strong> Comfortable at Level Two, ready for visible definition.</p>
-      <p><strong>Format.</strong> Resistance layered in — light dumbbells, bands around the lower thighs, and heel-lift variations. Same alignment principles throughout.</p>
-    </div>
+  <p>It's better to do 10 minutes and want to do it again tomorrow than to push yourself for 40 minutes, hate the stepper, and quit.</p>
+
+  <!-- ============================================ -->
+  <!-- SECTION 7 — EVERY DAY? -->
+  <!-- ============================================ -->
+
+  <h2><span class="num">07</span>Can You Train on a Stepper Every Day?</h2>
+
+  <p>You can, but it's important to understand what you're doing every day.</p>
+
+  <p>If it's light, casual activity — you can do it more often. For example, 10–20 minutes of calm walking to move around, get your blood flowing, add activity to your day.</p>
+
+  <p>But if you want real results: tone your glutes, legs, back of your thighs, back, improve your body shape — you need proper workouts.</p>
+
+  <p><strong>And proper strength workouts on a stepper are better done every other day so your muscles have time to recover.</strong></p>
+
+  <p>Because your body changes not just during training. Your body changes during recovery after training.</p>
+
+  <p>If you do heavy loading every day, you'll quickly hit exhaustion, tight legs, pain, and loss of motivation.</p>
+
+  <!-- ============================================ -->
+  <!-- SECTION 8 — TECHNIQUE RULES -->
+  <!-- ============================================ -->
+
+  <h2><span class="num">08</span>Main Technique Rules on a Stepper</h2>
+
+  <p>The biggest mistake is thinking you just need to "move your feet" on a stepper.</p>
+
+  <p><strong>No.</strong> If you want the stepper to work for weight loss, tone, glutes, legs, back, and your whole body, it's important not just to walk, but to move correctly.</p>
+
+  <p>Here are the main rules I always give to my clients.</p>
+
+  <!-- 8.1 — Knees Point Straight -->
+  <h3>8.1 Knees Point Straight</h3>
+
+  <p>Your knees shouldn't collapse inward. This is one of the most important things because your knee position affects not only comfort during training but also safety.</p>
+
+  <div class="guide-img-center">
+    <img src="imgs/form-knee.jpg" alt="Correct knee tracking on stepper" />
+    <div class="caption">Knees track straight — not collapsing inward</div>
   </div>
 
-  <h2><span class="num">05 / Equipment</span>What helps, what is optional</h2>
-  <p>You need nothing beyond the stepper to begin. Once consistent, these add depth.</p>
+  <p>If your knees go inward, the load distributes wrong: your thighs might get tight, and you might feel uncomfortable sensations in your knees, feet, or lower back.</p>
+
+  <p><strong>While walking, constantly check: your knees point where your feet point.</strong></p>
+
+  <!-- 8.2 — Arms Work Actively -->
+  <h3>8.2 Arms Work Actively</h3>
+
+  <div class="guide-img-center">
+    <img src="imgs/form-hands.jpg" alt="Active arms during stepper workout" />
+    <div class="caption">Active arms engage your upper body — no dangling</div>
+  </div>
+
+  <p>Your arms don't hang. If your arms just dangle or hang by your sides, you lose a huge part of your workout.</p>
+
+  <p>When you actively engage your arms, your upper body immediately turns on: your back, shoulders, chest, abs, coordination.</p>
+
+  <p><strong>And your workout stops being "just for legs" and becomes a full-body session.</strong></p>
+
+  <!-- 8.3 — Whole Body Moves -->
+  <h3>8.3 Your Whole Body Moves</h3>
+
+  <p>On a stepper, you shouldn't have a situation where only your knees move and everything else is frozen.</p>
+
+  <p>You move as a whole. Your core works, your upper body works, your arms work, your pelvis works.</p>
+
+  <p><strong>This is what turns the stepper from boring walking into a real full-body workout.</strong></p>
+
+  <!-- 8.4 — Pelvis Participates -->
+  <h3>8.4 Your Pelvis Participates in the Movement</h3>
+
+  <div class="guide-img-center">
+    <img src="imgs/form-hip.jpg" alt="Pelvis hinge movement on stepper" />
+    <div class="caption">Hinge from the hip — not the lower back</div>
+  </div>
+
+  <p>Your pelvis shouldn't be locked. If it doesn't move, the load often goes the wrong way: into your knees, the front of your thighs, your calves, or your lower back.</p>
+
+  <p>When your pelvis is properly engaged, your glutes, back of your thighs, and core start working better. And your body gradually becomes more toned, alive, and firm.</p>
+
+  <!-- 8.5 — Not Just Knees -->
+  <h3>8.5 Don't Walk With Just Your Knees</h3>
+
+  <div class="guide-img-center">
+    <img src="imgs/form-spine.jpg" alt="Proper posture on stepper — crown of head lifted" />
+    <div class="caption">Crown of the head lifts upward — long spine, neutral neck</div>
+  </div>
+
+  <p>If you feel that on a stepper only your knees move and everything else stays still — your technique probably needs fixing.</p>
+
+  <p>This usually feels like the stepper is heavy, uncomfortable, your legs get tight fast, and your body doesn't transform much.</p>
+
+  <p><strong>Our goal is not to mechanically push the pedals, but to create coordinated movement of your whole body.</strong></p>
+
+  <!-- 8.6 — Gradual Progression -->
+  <h3>8.6 Gradually Progress in Load</h3>
+
+  <p>For your body to change, the load has to increase. But not suddenly.</p>
+
+  <p>You don't need to suddenly set a hard level, walk for an hour, and then lie around with tight legs.</p>
+
+  <p>Progression should be reasonable:</p>
+
   <ul class="rule-list">
-    <li><span class="n">i</span><span class="t"><strong>Light dumbbells, one to four pounds.</strong> Upper-body work during steady-state stepping.</span></li>
-    <li><span class="n">ii</span><span class="t"><strong>Fabric resistance bands.</strong> Around the lower thighs for increased glute and outer-hip activation.</span></li>
-    <li><span class="n">iii</span><span class="t"><strong>Ankle weights — advanced only.</strong> They amplify whatever pattern you already have, good or bad.</span></li>
+    <li><span class="n">•</span><span class="t">First you learn the technique</span></li>
+    <li><span class="n">•</span><span class="t">Then you increase the time</span></li>
+    <li><span class="n">•</span><span class="t">Then you add exercises</span></li>
+    <li><span class="n">•</span><span class="t">Then you raise the difficulty</span></li>
+    <li><span class="n">•</span><span class="t">Then you bring in dumbbells, arms, core, more complex combinations</span></li>
   </ul>
 
-  <h2><span class="num">06 / Maintenance</span>The part everyone ignores</h2>
-  <p>A well-maintained stepper lasts years. Three habits are all that is required.</p>
+  <p><strong>Your body likes gradualness. That's how you can train for a long time, safely, and with results.</strong></p>
+
+  <!-- TECHNIQUE ICON GRID -->
+  <div class="icon-grid">
+    <div class="icon-item">
+      <img src="imgs/form-foot.jpg" alt="Full foot on pedal" />
+      <span>Full foot on pedal</span>
+    </div>
+    <div class="icon-item">
+      <img src="imgs/form-knee.jpg" alt="Knees track straight" />
+      <span>Knees track straight</span>
+    </div>
+    <div class="icon-item">
+      <img src="imgs/form-spine.jpg" alt="Crown of head lifted" />
+      <span>Long spine</span>
+    </div>
+    <div class="icon-item">
+      <img src="imgs/form-hip.jpg" alt="Hinge from hip" />
+      <span>Hinge from hip</span>
+    </div>
+    <div class="icon-item">
+      <img src="imgs/form-knee-soft.jpg" alt="Soft knees" />
+      <span>Soft knees</span>
+    </div>
+    <div class="icon-item">
+      <img src="imgs/form-hands.jpg" alt="Hands off handles" />
+      <span>Hands off handles</span>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- SECTION 9 — WHAT IF SOMETHING HURTS -->
+  <!-- ============================================ -->
+
+  <h2><span class="num">09</span>What to Do If Something Hurts</h2>
+
+  <p><strong>Nothing should hurt on a stepper.</strong> At most, you might feel pleasant tiredness, muscle work, sweat, faster breathing.</p>
+
+  <p>If pain appears — it's a signal that something's wrong.</p>
+
+  <p>Common causes:</p>
+
   <ul class="rule-list">
-    <li><span class="n">i</span><span class="t"><strong>Lubricate every seven to fourteen days.</strong> Apply silicone oil to the piston joints while the stepper moves slowly.</span></li>
-    <li><span class="n">ii</span><span class="t"><strong>Tighten the tension mechanism monthly.</strong> The resistance screw loosens with use.</span></li>
-    <li><span class="n">iii</span><span class="t"><strong>Replace the display battery when needed.</strong> A fresh battery keeps the metrics accurate.</span></li>
+    <li><span class="n">•</span><span class="t">Knees collapse inward</span></li>
+    <li><span class="n">•</span><span class="t">Body weight goes the wrong direction</span></li>
+    <li><span class="n">•</span><span class="t">Foot is unstable</span></li>
+    <li><span class="n">•</span><span class="t">You're pressing too hard with your toes</span></li>
+    <li><span class="n">•</span><span class="t">Pelvis isn't engaged</span></li>
+    <li><span class="n">•</span><span class="t">Glutes aren't working</span></li>
+    <li><span class="n">•</span><span class="t">Lower back is taking the load</span></li>
+    <li><span class="n">•</span><span class="t">Upper body is tense</span></li>
+    <li><span class="n">•</span><span class="t">You increased workout time too quickly</span></li>
+    <li><span class="n">•</span><span class="t">You're doing heavy loading every day without recovery</span></li>
   </ul>
+
+  <div class="callout">
+    <div class="tag">Important</div>
+    <p><strong>Sometimes knee pain isn't just about the knees.</strong> It can be connected to your feet, pelvis, posture, your regular walking pattern, tension in your front thigh, or weak glute work.</p>
+    <p style="margin-top:8px;">That's why proper technique on a stepper is very important.</p>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- SECTION 10 — CALVES CRAMP -->
+  <!-- ============================================ -->
+
+  <h2><span class="num">10</span>If Your Calves Cramp or Your Front Thigh Gets Tight</h2>
+
+  <p>This is one of the most common stories. Someone gets on a stepper, walks for 5–10 minutes — and that's it: calves are burning, front thigh is tight, can't continue.</p>
+
+  <p>Usually this means the load distributes unevenly.</p>
+
+  <p>Possible reasons:</p>
+
+  <ul class="rule-list">
+    <li><span class="n">•</span><span class="t">Too much pressure on your toes</span></li>
+    <li><span class="n">•</span><span class="t">Weak glute engagement</span></li>
+    <li><span class="n">•</span><span class="t">Knees go forward or inward</span></li>
+    <li><span class="n">•</span><span class="t">Foot position is awkward</span></li>
+    <li><span class="n">•</span><span class="t">Pace is too fast</span></li>
+    <li><span class="n">•</span><span class="t">Your body hasn't adapted yet</span></li>
+    <li><span class="n">•</span><span class="t">You're only using your legs, not your core and pelvis</span></li>
+  </ul>
+
+  <p>What to do:</p>
+
+  <ul class="rule-list">
+    <li><span class="n">•</span><span class="t">Slow down</span></li>
+    <li><span class="n">•</span><span class="t">Shorten your workout time</span></li>
+    <li><span class="n">•</span><span class="t">Watch your knee position</span></li>
+    <li><span class="n">•</span><span class="t">Add foot warm-up</span></li>
+    <li><span class="n">•</span><span class="t">Don't do heavy workouts every day</span></li>
+    <li><span class="n">•</span><span class="t">Learn to engage your glutes, pelvis, and back of thighs</span></li>
+  </ul>
+
+  <div class="callout">
+    <div class="tag">Key Point</div>
+    <p><strong>If only your calves cramp — this doesn't mean "it's supposed to be like this."</strong> It's a reason to check your technique.</p>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- SECTION 11 — WEIGHT LOSS -->
+  <!-- ============================================ -->
+
+  <h2><span class="num">11</span>How the Stepper Helps You Lose Weight</h2>
+
+  <p>The stepper helps you lose weight not because it's magical. It helps because:</p>
+
+  <ul class="rule-list">
+    <li><span class="n">•</span><span class="t">It increases your daily activity</span></li>
+    <li><span class="n">•</span><span class="t">It gives cardio load</span></li>
+    <li><span class="n">•</span><span class="t">It helps you burn more energy</span></li>
+    <li><span class="n">•</span><span class="t">It strengthens your muscles</span></li>
+    <li><span class="n">•</span><span class="t">It improves your body tone</span></li>
+    <li><span class="n">•</span><span class="t">It helps reduce puffiness</span></li>
+    <li><span class="n">•</span><span class="t">It makes training accessible at home</span></li>
+    <li><span class="n">•</span><span class="t">It helps add movement to your regular life</span></li>
+  </ul>
+
+  <p>But here's an important point: <strong>weight loss is not just about the stepper.</strong></p>
+
+  <p>The results are affected by:</p>
+
+  <ul class="rule-list">
+    <li><span class="n">•</span><span class="t">Nutrition</span></li>
+    <li><span class="n">•</span><span class="t">Sleep</span></li>
+    <li><span class="n">•</span><span class="t">Stress</span></li>
+    <li><span class="n">•</span><span class="t">Consistency</span></li>
+    <li><span class="n">•</span><span class="t">Recovery</span></li>
+    <li><span class="n">•</span><span class="t">Your cycle</span></li>
+    <li><span class="n">•</span><span class="t">Your overall body condition</span></li>
+    <li><span class="n">•</span><span class="t">Daily activity level</span></li>
+  </ul>
+
+  <p><strong>That's why I'm against the approach "kill yourself on the stepper and eat nothing."</strong> I'm for a system where your body gets movement, nutrition, and recovery.</p>
+
+  <!-- ============================================ -->
+  <!-- SECTION 12 — 1200 CALORIES -->
+  <!-- ============================================ -->
+
+  <h2><span class="num">12</span>Why You Don't Need to Eat Only 1200 Calories</h2>
+
+  <p>Very often women try to lose weight this way: eat less → get tired → lose control → blame themselves → start over Monday.</p>
+
+  <p>But if you eat too little, sleep badly, work a lot, sit with kids, manage a house, and also try to train — your body just doesn't have enough energy.</p>
+
+  <p>And then it starts asking for quick sources: sugar, bread, chips, cookies, evening snacking.</p>
+
+  <p>In my system, nutrition is not about hard restrictions. It's about:</p>
+
+  <ul class="rule-list">
+    <li><span class="n">•</span><span class="t">Eating enough</span></li>
+    <li><span class="n">•</span><span class="t">Having proper main meals</span></li>
+    <li><span class="n">•</span><span class="t">Not being afraid of food</span></li>
+    <li><span class="n">•</span><span class="t">Adding protein, vegetables, carbs, fats</span></li>
+    <li><span class="n">•</span><span class="t">Not turning weight loss into punishment</span></li>
+  </ul>
+
+  <p><strong>Because when your body is properly fed, it's easier for it to move, recover, and lose weight.</strong></p>
+
+  <!-- ============================================ -->
+  <!-- SECTION 13 — HOW OFTEN -->
+  <!-- ============================================ -->
+
+  <h2><span class="num">13</span>How Often to Train for Results</h2>
+
+  <p><strong>Rough outline:</strong></p>
+
+  <div class="callout">
+    <div class="tag">If you're a beginner</div>
+    <p>2–3 times per week for 10–20 minutes.</p>
+  </div>
+
+  <div class="callout" style="border-left-color: var(--grey-2);">
+    <div class="tag">If you've already adapted a bit</div>
+    <p>3–4 times per week for 25–40 minutes.</p>
+  </div>
+
+  <div class="callout" style="border-left-color: var(--black);">
+    <div class="tag">If you want real body results</div>
+    <p>3 proper workouts per week + light activity on other days.</p>
+  </div>
+
+  <p><strong>Important:</strong> if your workout was intense and your legs are tight, give yourself recovery the next day instead of pushing hard again.</p>
+
+  <p>You don't need to suffer on the stepper every day. You need a system you can repeat for a long time.</p>
+
+  <!-- ============================================ -->
+  <!-- SECTION 14 — BEFORE TRAINING -->
+  <!-- ============================================ -->
+
+  <h2><span class="num">14</span>What to Do Before Training</h2>
+
+  <p>Before training it's important to:</p>
+
+  <ul class="rule-list">
+    <li><span class="n">•</span><span class="t">Check that the stepper is standing stable</span></li>
+    <li><span class="n">•</span><span class="t">Wear comfortable shoes or train the way you feel comfortable</span></li>
+    <li><span class="n">•</span><span class="t">Put water nearby</span></li>
+    <li><span class="n">•</span><span class="t">Start with a gentle warm-up</span></li>
+    <li><span class="n">•</span><span class="t">Don't get on the stepper right after a heavy meal</span></li>
+    <li><span class="n">•</span><span class="t">Check how you're feeling</span></li>
+    <li><span class="n">•</span><span class="t">Set up to move well, not to "survive"</span></li>
+  </ul>
+
+  <p><strong>Training shouldn't start with violence against yourself.</strong> It's better to enter gently than to start hard and regret it after 5 minutes.</p>
+
+  <!-- IMAGE: Warm-up icons -->
+  <div class="guide-img-center">
+    <img src="imgs/prep-warmup.jpg" alt="Warm-up exercises for stepper training" />
+    <div class="caption">Gentle warm-up — hip circles, cat-cow, bodyweight squats</div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- SECTION 15 — AFTER TRAINING -->
+  <!-- ============================================ -->
+
+  <h2><span class="num">15</span>What to Do After Training</h2>
+
+  <p>After training:</p>
+
+  <ul class="rule-list">
+    <li><span class="n">•</span><span class="t">Slowly recover your breathing</span></li>
+    <li><span class="n">•</span><span class="t">Don't sit down suddenly</span></li>
+    <li><span class="n">•</span><span class="t">Drink water</span></li>
+    <li><span class="n">•</span><span class="t">Do a gentle cool-down</span></li>
+    <li><span class="n">•</span><span class="t">Notice how your knees, feet, back feel</span></li>
+    <li><span class="n">•</span><span class="t">Don't blame yourself if you did less than planned</span></li>
+  </ul>
+
+  <p><strong>It's better to do 15 minutes well than 40 minutes in pain and then quit for two weeks.</strong></p>
+
+  <!-- ============================================ -->
+  <!-- SECTION 16 — SAFE RULES -->
+  <!-- ============================================ -->
+
+  <h2><span class="num">16</span>My Safe Stepper Training Rules</h2>
+
+  <ul class="checklist">
+    <li>Nothing should hurt</li>
+    <li>Beginners start gradually</li>
+    <li>Technique is more important than speed</li>
+    <li>Knees must be controlled</li>
+    <li>Arms don't hang — upper body works</li>
+    <li>Pelvis isn't locked — it participates in movement</li>
+    <li>If only calves cramp — look for the mistake</li>
+    <li>If back hurts — check your pelvis and core position</li>
+    <li>Strength workouts include recovery</li>
+    <li>You don't need to "die" on the stepper every day</li>
+    <li>Nutrition should support training, not get in the way</li>
+    <li>The stepper is not punishment for food — it's a way to reclaim your body</li>
+  </ul>
+
+  <!-- ============================================ -->
+  <!-- SECTION 17 — RESULTS -->
+  <!-- ============================================ -->
+
+  <h2><span class="num">17</span>What Results You Can Get</h2>
+
+  <p>With regular training and proper nutrition, you might notice:</p>
+
+  <ul class="rule-list">
+    <li><span class="n">•</span><span class="t">Weight loss</span></li>
+    <li><span class="n">•</span><span class="t">Reduced puffiness</span></li>
+    <li><span class="n">•</span><span class="t">Smaller measurements</span></li>
+    <li><span class="n">•</span><span class="t">Tighter legs</span></li>
+    <li><span class="n">•</span><span class="t">Firmer glutes</span></li>
+    <li><span class="n">•</span><span class="t">Lightness in your body</span></li>
+    <li><span class="n">•</span><span class="t">More energy</span></li>
+    <li><span class="n">•</span><span class="t">Better back feeling</span></li>
+    <li><span class="n">•</span><span class="t">Improved posture</span></li>
+    <li><span class="n">•</span><span class="t">A habit of moving at home</span></li>
+    <li><span class="n">•</span><span class="t">More confidence in yourself</span></li>
+  </ul>
+
+  <p>For me personally, the stepper became a tool that helped me lose 10 kg and tone my body. <strong>But most importantly, I stopped seeing training as punishment.</strong> It became a way to return energy, strength, and a feeling that I'm back in my body.</p>
+
+  <!-- ============================================ -->
+  <!-- SECTION 18 — WHY I SUCCEEDED -->
+  <!-- ============================================ -->
+
+  <h2><span class="num">18</span>Why I Succeeded</h2>
+
+  <p>I didn't succeed because I became perfect. Not because I always have motivation. Not because I never get tired. Not because I live in an ideal routine.</p>
+
+  <p><strong>I succeeded because I found a format that works for my real life.</strong></p>
+
+  <p>A life with a child. Work. Studies. Daily routine. Tiredness. Ordinary days. Imperfect nutrition. And no extra two hours to drive to the gym.</p>
+
+  <p>The stepper became for me not a way to punish myself for food, but a way to quickly return to my body. Move. Turn on. Sweat. Feel my muscles. Get myself together. And gradually change myself without violence.</p>
+
+  <p><strong>That's why I love this format so much.</strong></p>
+
+  <!-- ============================================ -->
+  <!-- SECTION 19 — WHY I CREATED THE MARATHON -->
+  <!-- ============================================ -->
+
+  <h2><span class="num">19</span>Why I Created a Stepper Marathon</h2>
+
+  <p>When I understood how powerful the stepper can work if you approach it not as boring cardio but as a full training system, I created my marathon.</p>
+
+  <p>It's not just "walk on a stepper."</p>
+
+  <p>Inside the marathon we train. I combined:</p>
+
+  <ul class="rule-list">
+    <li><span class="n">•</span><span class="t">Stepper work</span></li>
+    <li><span class="n">•</span><span class="t">Pilates</span></li>
+    <li><span class="n">•</span><span class="t">Biomechanics</span></li>
+    <li><span class="n">•</span><span class="t">Technique work</span></li>
+    <li><span class="n">•</span><span class="t">Nutrition without strict diets</span></li>
+    <li><span class="n">•</span><span class="t">Foot exercises</span></li>
+    <li><span class="n">•</span><span class="t">Pelvis work</span></li>
+    <li><span class="n">•</span><span class="t">Upper body work</span></li>
+    <li><span class="n">•</span><span class="t">Strength and cardio training</span></li>
+    <li><span class="n">•</span><span class="t">Error breakdowns</span></li>
+    <li><span class="n">•</span><span class="t">Support and clear system</span></li>
+  </ul>
+
+  <p>I've already run several sessions, and over 100 women have tried this approach. Many came thinking: "I thought you could only walk boring on a stepper." And then wrote that they sweated for the first time in 10 minutes, felt their glutes, understood their technique mistakes, and fell in love with the stepper.</p>
+
+  <!-- ============================================ -->
+  <!-- SECTION 20 — WHAT'S INSIDE -->
+  <!-- ============================================ -->
+
+  <h2><span class="num">20</span>What's Inside My Marathon</h2>
+
+  <p>If after reading this guide you understand you want not just to walk on a stepper but to train with a clear system, technique, and support, you can join my marathon.</p>
+
+  <p>Inside the marathon:</p>
+
+  <ul class="rule-list">
+    <li><span class="n">•</span><span class="t">5 diverse stepper workouts</span></li>
+    <li><span class="n">•</span><span class="t">Individual technique breakdown for each participant</span></li>
+    <li><span class="n">•</span><span class="t">Body analysis and individual error correction</span></li>
+    <li><span class="n">•</span><span class="t">Nutrition during and after the marathon</span></li>
+    <li><span class="n">•</span><span class="t">Pelvic floor workout</span></li>
+    <li><span class="n">•</span><span class="t">Upper back and chest opening workout</span></li>
+    <li><span class="n">•</span><span class="t">Anti-cellulite massages</span></li>
+    <li><span class="n">•</span><span class="t">Personal consultation with me</span></li>
+    <li><span class="n">•</span><span class="t">Support and answers to questions</span></li>
+    <li><span class="n">•</span><span class="t">Special section on laziness: why laziness isn't usually about laziness at all</span></li>
+  </ul>
+
+  <p><strong>My goal is not just to give you workouts.</strong> My goal is to help you understand your body, learn to move safely, stop being afraid of the stepper, see your mistakes, and finally start getting results from it.</p>
+
+  <p>Because the stepper can be a machine that sits in the corner. Or it can become your home tool for weight loss, tone, energy, and a beautiful body.</p>
+
+  <!-- ============================================ -->
+  <!-- AUTHOR NOTE -->
+  <!-- ============================================ -->
 
   <div class="author-note">
-    <div class="tag">The One Rule</div>
-    <blockquote>"The stepper only works if you get on it. Start with five minutes a day. Then do it again tomorrow."</blockquote>
+    <div class="tag">The End</div>
+    <blockquote>"The stepper only works if you get on it. Start with five minutes a day. Then do it again tomorrow. And one day, you'll look back and realize — you've completely changed."</blockquote>
   </div>
 
 </article>
 
+<!-- CTA -->
 <section class="article-cta">
   <div class="container">
-    <span class="tag">The Full Program</span>
+    <span class="tag">Ready to Start?</span>
     <h2>The guide is the introduction. The program is the practice.</h2>
-    <p>Join the waitlist for first access when enrollment opens. No commitment.</p>
-    <div class="cta-buttons">
-      <a href="index.html#pricing" class="btn-primary">View the Program</a>
-      <a href="index.html" class="btn-link">Back to Home</a>
-    </div>
+    <p>Join the next cohort — technique breakdown, full workouts, personal support, and real results.</p>
+    <a href="index.html#pricing" class="btn-primary">View the Program →</a>
   </div>
 </section>
 
